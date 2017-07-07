@@ -51,10 +51,7 @@ drupal_db_backend: mysql
 drupal_build_makefile: false
 drupal_build_composer: false
 drupal_build_composer_project: false
-drupal_install_site: false
-
-# Additional arguments or options to pass to `drush site-install`.
-drupal_site_install_extra_args: []
+install_site: false
 
 # Cron jobs are added to the vagrant user's crontab. Keys include name
 # (required), minute, hour, day, weekday, month, job (required), and state.
@@ -142,11 +139,12 @@ extra_packages:
   - sqlite
 
 # You can configure almost anything else on the server in the rest of this file.
-drush_version: "8.1.10"
-
 extra_security_enabled: false
 
-firewall_enabled: true
+drush_version: "master"
+drush_keep_updated: true
+drush_composer_cli_options: "--prefer-dist --no-interaction"
+
 firewall_allowed_tcp_ports:
   - "22"
   - "25"
@@ -160,13 +158,10 @@ firewall_allowed_tcp_ports:
   - "8983"
   - "9200"
 firewall_log_dropped_packets: false
-firewall_disable_firewalld: true
-firewall_disable_ufw: true
 
-# PHP Configuration. Currently-supported versions: 5.6, 7.0, 7.1.
-# See version-specific notes: http://docs.drupalvm.com/en/latest/configurations/php/
-php_version: "7.1"
-php_install_recommends: no
+# PHP Configuration. Currently-supported versions: 5.6, 7.0.
+# To use 5.6, see: http://docs.drupalvm.com/en/latest/other/php-56/
+php_version: "7.0"
 php_memory_limit: "192M"
 php_display_errors: "On"
 php_display_startup_errors: "On"
@@ -204,8 +199,8 @@ mysql_wait_timeout: 300
 adminer_install_filename: index.php
 
 # Node.js configuration (if enabled above).
-# Valid examples: "0.10", "0.12", "4.x", "5.x", "6.x".
-nodejs_version: "6.x"
+# Valid examples: "0.10", "0.12", "4.x", "5.x".
+nodejs_version: "0.12"
 nodejs_npm_global_packages: []
 nodejs_install_npm_user: "{{ drupalvm_user }}"
 npm_config_prefix: "/home/{{ drupalvm_user }}/.npm-global"
@@ -233,24 +228,16 @@ php_xdebug_remote_connect_back: 1
 # Use PHPSTORM for PHPStorm, sublime.xdebug for Sublime Text.
 php_xdebug_idekey: PHPSTORM
 php_xdebug_max_nesting_level: 256
-php_xdebug_remote_host: "{{ ansible_default_ipv4.gateway }}"
 
 # Solr Configuration (if enabled above).
-solr_version: "5.5.3"
+solr_version: "5.5.2"
 solr_xms: "64M"
 solr_xmx: "128M"
 
 # Selenium configuration.
 selenium_version: 2.53.0
 
-# Docker configuration.
-docker_container_name: drupal-vm
-docker_image_name: drupal-vm
-docker_image_path: ~/Downloads
-
 # Other configuration.
 dashboard_install_dir: /var/www/dashboard
 known_hosts_path: ~/.ssh/known_hosts
-hostname_configure: true
-hostname_fqdn: "{{ vagrant_hostname }}"
-ssh_home: "{{ drupal_core_path }}"
+#ssh_home: "{{ drupal_core_path }}"
