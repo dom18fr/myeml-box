@@ -1,16 +1,16 @@
-# Project setup
+# Installation du projet
 
-Following setup steps should be provisionned
+Dans l'attente de provisionner toutes ces étapes : 
 
-**Projects root**
+**À la racine du projet**
 
-```bash
+```
 echo '192.168.88.66  local.cms.makersboard.me' | sudo tee -a /etc/hosts > /dev/null
 echo '192.168.88.66  local.cdm.makersboard.me' | sudo tee -a /etc/hosts > /dev/null
 vagrant up
 vagrant ssh
 
-# now in the vm
+# Dans la vm
 
 cd /var/www/myeml/cms
 composer install
@@ -22,6 +22,9 @@ drush cim -y
 cd /var/www/myeml/cdm
 composer install --no-interaction
 bin/console doctrine:schema:create
+
+# Création d'un user 
+bin/console eavmanager:create-user -a --password=admin admin@clever-age.com
 
 sudo nano /etc/nginx/sites-enabled/local.cdm.makersboard.me
 
@@ -85,6 +88,7 @@ server {
     access_log /var/log/nginx/myeml_cdm_access.log;
 }
 ```
+
 **Gérer les permissions system pour Symfony**
 
 Noter le uid de l'utilisateur sur votre machine hôte, il est visible dans la vm lorsque l'on fait un `ll` dans un dossier
@@ -95,8 +99,21 @@ sudo adduser syuser
 sudo usermod [uid] syuser
 
 sudo nano /etc/php/7.0/fpm/pool.d/www.conf
-# Remplacer www-data par syuser, pour user et pour group
+```
 
+**Remplacer www-data par syuser, pour user et pour group puis redamrreer php et nginx**
+
+```
 sudo service nginx restart
 sudo service php7.0-fpm restart
 ```
+
+Connexion à Drupal : 
+
+  * [http://local.cms.makersboard.me](http://local.cms.makersboard.me)
+  * admin | admin
+
+Connexion à Clever Data Manager
+
+  * [http://local.cdm.makersboard.me](http://local.cdm.makersboard.me)
+  * admin@clever-age.com | admin
