@@ -5,7 +5,7 @@ export default class MyEMLyon extends Component {
     return (
       <div>
         <h1>My EMLyon</h1>
-        <p>Rederered using React !</p>
+        <p>Redered using React !</p>
       </div>
     )
   }

@@ -15,7 +15,7 @@
     "webpack-dev-server": "^2.5.1"
   },
   "scripts": {
-    "build": "webpack --progress",
+    "build": "webpack --progress && cp dist/myeml.js ../web/myeml.js",
     "dev": "webpack-dev-server --progress --content-base ./dist --inline --hot --open"
   }
 }

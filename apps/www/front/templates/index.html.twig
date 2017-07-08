@@ -1,5 +1,9 @@
 {% extends "layout.html.twig" %}
 
-{% block content %}
-    Welcome to your new Silex Application!
-{% endblock %}
+{%- block content -%}
+    <div id="myeml"></div>
+{%- endblock -%}
+
+{%- block javascript -%}
+    <script src="{{ asset('myeml.js') }}" type="text/javascript"></script>
+{%- endblock -%}
