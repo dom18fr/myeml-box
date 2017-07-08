@@ -20,6 +20,7 @@
 echo '192.168.88.66  local.cms.makersboard.me' | sudo tee -a /etc/hosts > /dev/null
 echo '192.168.88.66  local.cdm.makersboard.me' | sudo tee -a /etc/hosts > /dev/null
 echo '192.168.88.66  local.makersboard.me' | sudo tee -a /etc/hosts > /dev/null
+composer install
 vagrant up
 vagrant ssh
 ```
