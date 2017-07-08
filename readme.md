@@ -42,7 +42,44 @@ cp sites/default/default.local.settings.php sites/default/local.settings.php
 
 ```
 drush site-install minimal --account-pass=admin -y
+chmod -R 755 sites/default/
+drush config-set system.site uuid b126bf6f-d791-4452-8601-c1c69a9fc96c -y
 drush cim -y
+```
+
+## Permissions system
+
+*Noter le **uid** de l'utilisateur sur votre machine hôte, il est visible dans la vm lorsque l'on fait un `ll` dans un dossier
+sous le partage nfs.*
+
+```
+# Créer un user pour php (le mot de passe et les infos user sont sans importance )
+# et lui setter le uuid de l'utilisateur de la machine hôte
+sudo adduser syuser
+sudo usermod -u [uid] syuser
+
+sudo nano /etc/php/7.0/fpm/pool.d/www.conf
+```
+
+*Remplacer :*
+
+```
+user = www-data
+group = www-data
+```
+
+*par :*
+
+```
+user = syuser
+group = syuser
+```
+
+### Rédemarer nginx et php
+
+```
+sudo service nginx restart
+sudo service php7.0-fpm restart
 ```
 
 ## CDM
@@ -152,32 +189,6 @@ server {
     error_log /var/log/nginx/myeml_front_error.log;
     access_log /var/log/nginx/myeml_front_access.log;
 }
-```
-
-## Permissions system
-
-*Noter le **uid** de l'utilisateur sur votre machine hôte, il est visible dans la vm lorsque l'on fait un `ll` dans un dossier
-sous le partage nfs.*
-
-```
-sudo adduser syuser
-sudo usermod [uid] syuser
-
-sudo nano /etc/php/7.0/fpm/pool.d/www.conf
-```
-
-*Remplacer :*
-
-```
-user = www-data
-group = www-data
-```
-
-*par :*
-
-```
-user = syuser
-group = syuser
 ```
 
 ### Rédemarer nginx et php

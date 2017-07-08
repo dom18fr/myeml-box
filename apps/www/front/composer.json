@@ -37,7 +37,7 @@
             "php -S localhost:8888 -t web"
         ],
         "post-install-cmd": [
-            "cd react && npm run build"
+            "cd react && npm install && npm run build"
         ]
     }
 }

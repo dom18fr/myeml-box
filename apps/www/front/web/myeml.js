@@ -22449,7 +22449,7 @@ var MyEMLyon = function (_Component) {
         _react2.default.createElement(
           'p',
           null,
-          'Redered using React test !'
+          'Rendered using React !'
         )
       );
     }
