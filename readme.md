@@ -1,6 +1,6 @@
 # Installation du projet
 
-*Dans l'attente de provisionner toutes ces étapes ... * 
+*Dans l'attente de provisionner toutes ces étapes ...* 
 
 ## Monter la vm
 
@@ -104,7 +104,17 @@ server {
 
 *Dans la vm*
 
-### Construire les sources avec composer
+### Installation des outils js
+
+```
+cd /home/vagrant
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install nodejs
+sudo npm install -g yarn
+sudo npm install -g gulp
+```
+
+### Construction les sources avec composer et yarn
 
 ```
 cd /var/www/myeml/front
@@ -203,18 +213,22 @@ Accès Front :
 
 ```
 # vider les caches
+
 cd /var/www/myeml/cms/web
 drush cr
 
 # importer les confs code->base
+
 cd /var/www/myeml/cms/web
 drush cim -y
 
 # exporter les confs base->code
+
 cd /var/www/myeml/cms/web
 drush cex -y
 
 # installer un nouveau module
+
 cd /var/www/myeml/cms/
 composer require drupal/NOM_DU_MODULE
 cd web
@@ -227,6 +241,7 @@ drush en NOM_DU_MODULE -y
 
 ```
 # vider le cache
+
 rm -rf [project_root]/apps/www/cdm/var/cache/*
 ```
 
@@ -234,8 +249,11 @@ rm -rf [project_root]/apps/www/cdm/var/cache/*
 
 ```
 # reconstruire les sources à jour
+
 composer install
+
 # /!\ mettre à jour les versions des dépendances /!\
+
 composer update
 ```
 
@@ -245,8 +263,11 @@ composer update
 
 ```
 # vider le cache
+
 rm -rf [project_root]/apps/www/cdm/var/cache/*
+
 # lancer le serveur de dev local react
+
 # @todo
 ```
 
@@ -254,7 +275,10 @@ rm -rf [project_root]/apps/www/cdm/var/cache/*
 
 ```
 # reconstruire les sources à jour
+
 composer install
+
 # /!\ mettre à jour les versions des dépendances /!\
+
 composer update
 ```
