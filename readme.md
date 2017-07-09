@@ -53,8 +53,8 @@ drush cim -y
 sous le partage nfs.*
 
 ```
-# Créer un user pour php (le mot de passe et les infos user sont sans importance )
-# et lui setter le uuid de l'utilisateur de la machine hôte
+# Créer un user pour php (le mot de passe et les infos user sont sans importance)
+# et lui setter le uid de l'utilisateur de la machine hôte
 sudo adduser syuser
 sudo usermod -u [uid] syuser
 
