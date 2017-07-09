@@ -49,6 +49,13 @@ drush cim -y
 
 ## Permissions system
 
+### Utilisateur applicatif
+
+Lorsque l'on fait du symfony, il est necessaire que l'utilisateur system qui execute php soit propriétaire du code source. En effet, Symfony écrit dans les sources pour le cache, les sessions etc...  
+Dans notre VM, les sources sont partagées via nfs et le propriétaire est l'utilisateur sur la machine hôte. Mais cet utilisateur n'existe pas dans le contexte de la vm, seul son uid est visible.
+L'astuce consiste donc à créer un utilisateur dans la vm et lui assigner le même uid que l'utilisateur de la machine hôte.
+On pourra ensuite configurer php pour qu'il s'execute avec ce user, et aux yeux du système, ce sera bien lui le propriétaire des sources.
+
 *Noter le **UID** de l'utilisateur sur votre machine hôte, il est visible dans la vm lorsque l'on fait un `ll` dans un dossier
 sous le partage nfs.*
 
