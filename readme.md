@@ -49,14 +49,14 @@ drush cim -y
 
 ## Permissions system
 
-*Noter le **uid** de l'utilisateur sur votre machine hôte, il est visible dans la vm lorsque l'on fait un `ll` dans un dossier
+*Noter le **UID** de l'utilisateur sur votre machine hôte, il est visible dans la vm lorsque l'on fait un `ll` dans un dossier
 sous le partage nfs.*
 
 ```
 # Créer un user pour php (le mot de passe et les infos user sont sans importance)
-# et lui setter le uid de l'utilisateur de la machine hôte
+# et lui setter le UID de l'utilisateur de la machine hôte
 sudo adduser syuser
-sudo usermod -u [uid] syuser
+sudo usermod -u UID syuser
 
 sudo nano /etc/php/7.0/fpm/pool.d/www.conf
 ```
