@@ -1,0 +1,3 @@
+myeml_model.context_switcher:
+    path: /context
+    defaults: { _controller: MyEMLEAVModelBundle:EAVModel:index }

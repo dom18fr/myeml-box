@@ -1,3 +1,7 @@
 eavmanager_admin:
     resource: '@CleverAgeEAVManagerAdminBundle/Resources/config/routing.yml'
     prefix: /
+
+myeml_model:
+    resource: '@MyEMLEAVModelBundle/Resources/config/context_routing.yml'
+    prefix: /
