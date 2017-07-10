@@ -6,21 +6,6 @@
 
 $config = array(
 
-    /**
-     * Setup the following parameters to match the directory of your installation.
-     * See the user manual for more details.
-     *
-     * Valid format for baseurlpath is:
-     * [(http|https)://(hostname|fqdn)[:port]]/[path/to/simplesaml/]
-     * (note that it must end with a '/')
-     *
-     * The full url format is useful if your SimpleSAMLphp setup is hosted behind
-     * a reverse proxy. In that case you can specify the external url here.
-     *
-     * Please note that SimpleSAMLphp will then redirect all queries to the
-     * external url, no matter where you come from (direct access or via the
-     * reverse proxy).
-     */
     'baseurlpath' => 'simplesaml/',
     'certdir' => 'cert/',
     'loggingdir' => 'log/',
@@ -69,12 +54,7 @@ $config = array(
      */
     'debug.validatexml' => false,
 
-    /**
-     * This password must be kept secret, and modified from the default value 123.
-     * This password will give access to the installation page of SimpleSAMLphp with
-     * metadata listing and diagnostics pages.
-     * You can also put a hash here; run "bin/pwgen.php" to generate one.
-     */
+
     'auth.adminpassword' => '123',
     'admin.protectindexpage' => false,
     'admin.protectmetadata' => false,
@@ -87,7 +67,7 @@ $config = array(
      * A possible way to generate a random salt is by running the following command from a unix shell:
      * tr -c -d '0123456789abcdefghijklmnopqrstuvwxyz' </dev/urandom | dd bs=32 count=1 2>/dev/null;echo
      */
-    'secretsalt' => 'defaultsecretsalt',
+    'secretsalt' => 'lre8zpq78e8plfwnin7w1npibg0yjhy6',
 
     /*
      * Some information about the technical persons running this installation.
