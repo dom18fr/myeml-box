@@ -32,7 +32,8 @@
 
         "cleverage/eav-manager": "1.2.*",
 
-        "symfony/assetic-bundle": "^2.8"
+        "symfony/assetic-bundle": "^2.8",
+        "simplesamlphp/simplesamlphp": "^1.14"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -50,8 +51,13 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
             "php bin/console assetic:dump"
         ],
+        "simplesamlphp-scripts": [
+            "cp simplesamlphp/config/* vendor/simplesamlphp/simplesamlphp/config/",
+            "cp simplesamlphp/metadata/* vendor/simplesamlphp/simplesamlphp/metadata/"
+        ],
         "post-install-cmd": [
-            "@symfony-scripts"
+            "@symfony-scripts",
+            "@simplesamlphp-scripts"
         ],
         "post-update-cmd": [
             "@symfony-scripts"
