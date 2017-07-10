@@ -54,7 +54,8 @@
         ],
         "simplesamlphp-scripts": [
             "cp simplesamlphp/config/* vendor/simplesamlphp/simplesamlphp/config/",
-            "cp simplesamlphp/metadata/* vendor/simplesamlphp/simplesamlphp/metadata/"
+            "cp simplesamlphp/metadata/* vendor/simplesamlphp/simplesamlphp/metadata/",
+            "mkdir vendor/simplesamlphp/simplesamlphp/cert/ && cp simplesamlphp/cert/* vendor/simplesamlphp/simplesamlphp/cert/"
         ],
         "post-install-cmd": [
             "@symfony-scripts",
