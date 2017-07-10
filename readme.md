@@ -89,6 +89,16 @@ sudo service nginx restart
 sudo service php7.0-fpm restart
 ```
 
+## Memcached
+
+Pour de meilleures perfs, les sessions symfony sont stockées dans memcache plutôt qu'en fichier.
+
+```
+cd /home/vagrant
+sudo apt-get install memcached
+sudo apt-get install php-memcached
+```
+
 ## CDM
 
 *Dans la vm*
