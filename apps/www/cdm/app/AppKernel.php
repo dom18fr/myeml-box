@@ -49,21 +49,39 @@ class AppKernel extends Kernel
         return __DIR__;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCacheDir()
     {
-        return dirname(__DIR__).'/var/cache/'.$this->getEnvironment();
+        if (in_array($this->environment, array('dev', 'test'), true)) {
+            return '/tmp/cdm/cache/' .  $this->environment;
+        }
+
+        return parent::getCacheDir();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getLogDir()
     {
-        return dirname(__DIR__).'/var/logs';
+        if (in_array($this->environment, array('dev', 'test'), true)) {
+            return '/tmp/cdm/logs';
+        }
+
+        return parent::getLogDir();
     }
+
+//    /**
+//     * {@inheritdoc}
+//     */
+//    public function getCacheDir()
+//    {
+//        return '/var/cache/'.$this->getEnvironment();
+//    }
+//
+//    /**
+//     * {@inheritdoc}
+//     */
+//    public function getLogDir()
+//    {
+//        return dirname(__DIR__).'/var/logs';
+//    }
 
     /**
      * Loads the container configuration.

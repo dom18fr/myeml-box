@@ -14,13 +14,29 @@ class ContextSwitcherType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $options = [
-            'choices' => [
+
+        $contexts = [
+            'campus' => [
                 'Campus de Lyon' => 'lyon',
                 'Campus de Paris' => 'paris',
                 'Campus de Shangaï' => 'shangai',
             ],
+            'program' => [
+                'Master 1' => 'm1',
+                'Master 2' => 'm2',
+            ],
+            'locale' => [
+                'Français' => 'fr_FR',
+                'English' => 'en_US',
+            ],
+            'profile' => [
+                'Étudiant' => 'student',
+                'Enseignant' => 'teacher',
+            ],
         ];
-        $builder->add('campus', ChoiceType::class, $options);
+
+        foreach ($contexts as $contextKey => $contextValues) {
+            $builder->add($contextKey, ChoiceType::class, ['choices' => $contextValues]);
+        }
     }
 }

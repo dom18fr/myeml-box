@@ -1,6 +1,7 @@
 parameters:
     sidus_data_class: MyEML\EAVModelBundle\Entity\Data
     sidus_value_class: MyEML\EAVModelBundle\Entity\Value
+    sidus_eav_model.context.form_type: MyEML\EAVModelBundle\Form\ContextSwitcherType
     sidus_eav_model.context.default_context:
         campus: lyon
         program: master
