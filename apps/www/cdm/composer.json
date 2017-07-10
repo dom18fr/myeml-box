@@ -34,6 +34,7 @@
 
         "symfony/assetic-bundle": "^2.8",
         "api-platform/core": "^2.0"
+        "simplesamlphp/simplesamlphp": "^1.14"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
@@ -51,10 +52,16 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
             "php bin/console assetic:dump"
         ],
+        "simplesamlphp-scripts": [
+            "cp simplesamlphp/config/* vendor/simplesamlphp/simplesamlphp/config/",
+            "cp simplesamlphp/metadata/* vendor/simplesamlphp/simplesamlphp/metadata/"
+        ],
         "post-install-cmd": [
             "@symfony-scripts",
             "bin/console doctrine:schema:update --force",
             "bin/console sidus:data:fix-discriminator"
+            "@symfony-scripts",
+            "@simplesamlphp-scripts"
         ],
         "post-update-cmd": [
             "@symfony-scripts"
