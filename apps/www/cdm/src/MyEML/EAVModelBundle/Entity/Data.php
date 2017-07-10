@@ -4,6 +4,7 @@ namespace MyEML\EAVModelBundle\Entity;
 
 use CleverAge\EAVManager\EAVModelBundle\Entity\AbstractData;
 use Doctrine\ORM\Mapping as ORM;
+use Sidus\EAVModelBundle\Model\FamilyInterface;
 
 /**
  * @ORM\Table(name="myeml_data", indexes={
@@ -17,4 +18,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Data extends AbstractData
 {
+    public function __construct(FamilyInterface $family)
+    {
+        parent::__construct($family);
+
+//        $this->setCurrentContext(['campus' => 'lyon']);
+    }
 }

@@ -1,0 +1,19 @@
+sidus_eav_model:
+    families:
+        Node:
+            attributeAsLabel: nodeTitle
+            attributes:
+                nodeTitle:
+                    type: string
+                    required: true
+                    context_mask:
+                        - campus
+                        - program
+                        - locale
+                        - profile
+                children:
+                    type: data_selector
+                    multiple: true
+                    options:
+                        allowed_families:
+                            - Node
