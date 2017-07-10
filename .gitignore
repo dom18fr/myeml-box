@@ -1,3 +1,6 @@
+# IDE settings
+.idea
+
 vendor
 config/local.config.yml
 .vagrant
