@@ -27,13 +27,29 @@ framework:
     trusted_proxies: '%trusted_proxies%'
     session:
         # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
-        handler_id: session.handler.native_file
-        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+        handler_id:  "%session.handler_id%"
+        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
     fragments: ~
     http_method_override: true
     assets: ~
     php_errors:
         log: true
+
+services:
+    session.memcached:
+        class: Memcached
+        arguments:
+            - '%session_memcached_prefix%'
+        calls:
+            - [ addServer, [ '%session_memcached_host%', '%session_memcached_port%' ]]
+
+    session.handler.memcached:
+        class: Symfony\Component\HttpFoundation\Session\Storage\Handler\MemcachedSessionHandler
+        arguments:
+            - '@session.memcached'
+            -
+                prefix: '%session_memcached_prefix%'
+                expiretime: '%session_memcached_expire%'
 
 # Twig Configuration
 twig:
