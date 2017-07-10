@@ -1,3 +1,0 @@
-1531261830
-%255BCleverAge%255CEAVManager%255CAssetBundle%255CEntity%255CDocument%255D%255B1%255D
-a:1:{i:0;O:27:"Doctrine\ORM\Mapping\Entity":2:{s:15:"repositoryClass";s:48:"Sidus\FileUploadBundle\Entity\ResourceRepository";s:8:"readOnly";b:0;}}

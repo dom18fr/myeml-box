@@ -1,3 +1,0 @@
-1531261831
-%255BSidus%255CEAVModelBundle%255CEntity%255CAbstractData%2524children%255D%255B1%255D
-a:1:{i:0;O:30:"Doctrine\ORM\Mapping\OneToMany":6:{s:8:"mappedBy";s:6:"parent";s:12:"targetEntity";s:41:"Sidus\EAVModelBundle\Entity\DataInterface";s:7:"cascade";a:3:{i:0;s:7:"persist";i:1;s:6:"remove";i:2;s:6:"detach";}s:5:"fetch";s:4:"LAZY";s:13:"orphanRemoval";b:1;s:7:"indexBy";N;}}
