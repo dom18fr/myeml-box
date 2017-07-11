@@ -1,0 +1,5 @@
+name: MyEML - CDM Connector
+type: module
+description: Allow connection with CDM.
+core: 8.x
+package: MyEML

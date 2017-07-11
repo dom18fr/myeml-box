@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function myeml_cdm_connector_node_insert(Drupal\Core\Entity\EntityInterface $entity) {
+  myeml_cdm_connector_send_message(['insert', 'node', $entity->id()]);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ */
+function myeml_cdm_connector_node_update(Drupal\Core\Entity\EntityInterface $entity) {
+  myeml_cdm_connector_send_message(['update', 'node', $entity->id()]);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete().
+ */
+function myeml_cdm_connector_node_delete(Drupal\Core\Entity\EntityInterface $entity) {
+  myeml_cdm_connector_send_message(['delete', 'node', $entity->id()]);
+}
+
+/**
+ * Store message to send with postMessage in Javascript.
+ *
+ * @param string $message
+ */
+function myeml_cdm_connector_send_message($message = '') {
+  if (empty($message)) {
+    return;
+  }
+
+  if (!isset($_SESSION['myeml_cdm_connector_messages'])) {
+    $_SESSION['myeml_cdm_connector_messages'] = [];
+  }
+
+  $_SESSION['myeml_cdm_connector_messages'][] = $message;
+}
+
+/**
+ * Get messages to send with postMessage in Javascript.
+ *
+ * @return array
+ */
+function myeml_cdm_connector_get_messages() {
+  $messages = [];
+  if (isset($_SESSION['myeml_cdm_connector_messages'])) {
+    $messages = $_SESSION['myeml_cdm_connector_messages'];
+    unset($_SESSION['myeml_cdm_connector_messages']);
+  }
+
+  return $messages;
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function myeml_cdm_connector_page_attachments(array &$attachments) {
+  $messages = myeml_cdm_connector_get_messages();
+  if (!empty($messages)) {
+    $attachments['#attached']['drupalSettings']['myeml_cdm_connector'] = [
+      'messages' => json_encode($messages),
+      'target' => '*',
+    ];
+    $attachments['#attached']['library'][] = 'myeml_cdm_connector/messages';
+  }
+}
