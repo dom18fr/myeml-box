@@ -132,6 +132,16 @@ server {
     location / {
         try_files $uri /app.php$is_args$args;
     }
+    location ^~ /simplesaml {
+        alias /var/www/myeml/cdm/vendor/simplesamlphp/simplesamlphp/www;
+        index index.php;
+        location ~ ^(?<prefix>/simplesaml)(?<phpfile>.+?\.php)(?<pathinfo>/.*)?$ {
+            fastcgi_pass 127.0.0.1:9000;
+            include fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME $document_root$phpfile;
+            fastcgi_param PATH_INFO $pathinfo if_not_empty;
+        }
+    }
     location ~ ^/(app_dev|config)\.php(/|$) {
         fastcgi_pass 127.0.0.1:9000;
         fastcgi_split_path_info ^(.+\.php)(/.*)$;
