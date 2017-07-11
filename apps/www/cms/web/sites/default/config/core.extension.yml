@@ -1,5 +1,8 @@
 module:
   block: 0
+  chosen: 0
+  chosen_lib: 0
+  chosen_test: 0
   config_filter: 0
   config_split: 0
   dblog: 0
