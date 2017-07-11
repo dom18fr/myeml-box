@@ -42,7 +42,8 @@ cp sites/default/default.local.settings.php sites/default/local.settings.php
 
 ```
 drush site-install minimal --account-pass=admin -y
-chmod -R 755 sites/default/
+chmod 755 sites/default
+chmod -R 755 sites/default/files
 drush config-set system.site uuid b126bf6f-d791-4452-8601-c1c69a9fc96c -y
 drush cim -y
 ```
