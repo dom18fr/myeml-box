@@ -20,7 +20,9 @@ class IframeResponseSubscriber extends FinishResponseSubscriber {
 
     $allowed_origin = \Drupal::config('myeml_cdm_connector.conf')->get('allowed_origin');
     if (!empty($allowed_origin)) {
-      $response->headers->set('X-Frame-Options', 'ALLOW-FROM ' . $allowed_origin, TRUE);
+      // Use Content-Security-Policy beacause X-Frame-Options ALLOW-FROM
+      // directive is not supported by Chrome.
+      $response->headers->set('Content-Security-Policy', 'frame-ancestors ' . $allowed_origin, TRUE);
     }
   }
 
