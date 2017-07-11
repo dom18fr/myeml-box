@@ -1,10 +1,23 @@
 import React, {Component} from 'react';
+import SortableTree from 'react-sortable-tree';
 
 export default class MyEMLTreeView extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      treeData: [{ title: 'Chicken', children: [ { title: 'Egg' } ] }],
+    };
+  }
+
   render () {
     return (
-      <div>
-        <h1>My EMLyon CDM Tree view !</h1>
+      <div style={ {height: 400} }>
+        <SortableTree
+          treeData={this.state.treeData}
+          onChange={treeData => this.setState({ treeData })}
+        />
       </div>
     )
   }
