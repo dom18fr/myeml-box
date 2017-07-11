@@ -52,7 +52,9 @@
             "php bin/console assetic:dump"
         ],
         "post-install-cmd": [
-            "@symfony-scripts"
+            "@symfony-scripts",
+            "bin/console doctrine:schema:update --force",
+            "bin/console sidus:data:fix-discriminator"
         ],
         "post-update-cmd": [
             "@symfony-scripts"
