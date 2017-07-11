@@ -1,15 +1,15 @@
-uuid: fa18e02b-b46f-467f-a0f9-7925db52f389
+uuid: 5f454c8c-e55a-4591-935e-e87eba7fc1c0
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - stark
+    - seven
 _core:
   default_config_hash: 5MNdk3fpMKx_xxBTcz2T11DL4XEU1H5SgHl8BsYdFsA
-id: stark_messages
-theme: stark
+id: seven_messages
+theme: seven
 region: highlighted
 weight: 0
 provider: null
