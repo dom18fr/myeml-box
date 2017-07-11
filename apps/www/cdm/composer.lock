@@ -204,16 +204,16 @@
         },
         {
             "name": "cleverage/eav-manager",
-            "version": "v1.2.6",
+            "version": "v1.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cleverage/eav-manager.git",
-                "reference": "842aa78a89724ee9a35f6dc435b816de503d336f"
+                "reference": "7f45b93c19ca8bac8302efaa8b54e81f23a37f28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cleverage/eav-manager/zipball/842aa78a89724ee9a35f6dc435b816de503d336f",
-                "reference": "842aa78a89724ee9a35f6dc435b816de503d336f",
+                "url": "https://api.github.com/repos/cleverage/eav-manager/zipball/7f45b93c19ca8bac8302efaa8b54e81f23a37f28",
+                "reference": "7f45b93c19ca8bac8302efaa8b54e81f23a37f28",
                 "shasum": ""
             },
             "require": {
@@ -258,20 +258,20 @@
                 "manager",
                 "model"
             ],
-            "time": "2017-07-03T14:35:29+00:00"
+            "time": "2017-07-11T12:22:54+00:00"
         },
         {
             "name": "cleverage/process-bundle",
-            "version": "v1.0.3",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cleverage/process-bundle.git",
-                "reference": "6118651edc46a08ef080b376def2cd1e23ae222f"
+                "reference": "bad75353645d45070ee0dc6bcef4a365977174b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cleverage/process-bundle/zipball/6118651edc46a08ef080b376def2cd1e23ae222f",
-                "reference": "6118651edc46a08ef080b376def2cd1e23ae222f",
+                "url": "https://api.github.com/repos/cleverage/process-bundle/zipball/bad75353645d45070ee0dc6bcef4a365977174b0",
+                "reference": "bad75353645d45070ee0dc6bcef4a365977174b0",
                 "shasum": ""
             },
             "require": {
@@ -313,7 +313,7 @@
                 "task",
                 "transformation"
             ],
-            "time": "2017-06-29T12:37:08+00:00"
+            "time": "2017-07-10T13:45:48+00:00"
         },
         {
             "name": "components/jquery",
@@ -2964,16 +2964,16 @@
         },
         {
             "name": "sidus/admin-bundle",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/VincentChalnot/SidusAdminBundle.git",
-                "reference": "a8f0a0c72bd07da310f08f988dce6b88c05e56b3"
+                "reference": "a60131bb832de968ee5b8d7d662823d3b2d3363f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VincentChalnot/SidusAdminBundle/zipball/a8f0a0c72bd07da310f08f988dce6b88c05e56b3",
-                "reference": "a8f0a0c72bd07da310f08f988dce6b88c05e56b3",
+                "url": "https://api.github.com/repos/VincentChalnot/SidusAdminBundle/zipball/a60131bb832de968ee5b8d7d662823d3b2d3363f",
+                "reference": "a60131bb832de968ee5b8d7d662823d3b2d3363f",
                 "shasum": ""
             },
             "require": {
@@ -3004,20 +3004,20 @@
                 "action",
                 "admin"
             ],
-            "time": "2017-06-13T17:27:14+00:00"
+            "time": "2017-07-11T12:26:11+00:00"
         },
         {
             "name": "sidus/datagrid-bundle",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/VincentChalnot/SidusDataGridBundle.git",
-                "reference": "148e7d45f9ddcf53bb65a12a6f17cee55421aac5"
+                "reference": "96e115d93d639fad51a5940b5300acb73b96656b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VincentChalnot/SidusDataGridBundle/zipball/148e7d45f9ddcf53bb65a12a6f17cee55421aac5",
-                "reference": "148e7d45f9ddcf53bb65a12a6f17cee55421aac5",
+                "url": "https://api.github.com/repos/VincentChalnot/SidusDataGridBundle/zipball/96e115d93d639fad51a5940b5300acb73b96656b",
+                "reference": "96e115d93d639fad51a5940b5300acb73b96656b",
                 "shasum": ""
             },
             "require": {
@@ -3047,20 +3047,20 @@
                 "datagrid",
                 "sort"
             ],
-            "time": "2017-06-13T17:29:07+00:00"
+            "time": "2017-07-11T12:28:00+00:00"
         },
         {
             "name": "sidus/eav-bootstrap-bundle",
-            "version": "v1.2.2",
+            "version": "v1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/VincentChalnot/SidusEAVBootstrapBundle.git",
-                "reference": "26eb17c851f394ac20b7355bbbfd32049145514d"
+                "reference": "01e35e4d115fe9cf4a2b3bdd88735471a85fc9b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VincentChalnot/SidusEAVBootstrapBundle/zipball/26eb17c851f394ac20b7355bbbfd32049145514d",
-                "reference": "26eb17c851f394ac20b7355bbbfd32049145514d",
+                "url": "https://api.github.com/repos/VincentChalnot/SidusEAVBootstrapBundle/zipball/01e35e4d115fe9cf4a2b3bdd88735471a85fc9b7",
+                "reference": "01e35e4d115fe9cf4a2b3bdd88735471a85fc9b7",
                 "shasum": ""
             },
             "require": {
@@ -3097,7 +3097,7 @@
                 "bootstrap",
                 "eav"
             ],
-            "time": "2017-06-28T17:33:48+00:00"
+            "time": "2017-07-11T12:29:19+00:00"
         },
         {
             "name": "sidus/eav-datagrid-bundle",
@@ -3146,16 +3146,16 @@
         },
         {
             "name": "sidus/eav-filter-bundle",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/VincentChalnot/SidusEAVFilterBundle.git",
-                "reference": "e57c928ed0f4272f00c2e0f4d2ad1ec37f9ec70c"
+                "reference": "90b7a4364d0b8599ea179f3af043e91a7b509cfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VincentChalnot/SidusEAVFilterBundle/zipball/e57c928ed0f4272f00c2e0f4d2ad1ec37f9ec70c",
-                "reference": "e57c928ed0f4272f00c2e0f4d2ad1ec37f9ec70c",
+                "url": "https://api.github.com/repos/VincentChalnot/SidusEAVFilterBundle/zipball/90b7a4364d0b8599ea179f3af043e91a7b509cfe",
+                "reference": "90b7a4364d0b8599ea179f3af043e91a7b509cfe",
                 "shasum": ""
             },
             "require": {
@@ -3189,20 +3189,20 @@
                 "filter",
                 "sort"
             ],
-            "time": "2017-06-13T17:33:49+00:00"
+            "time": "2017-07-11T12:30:40+00:00"
         },
         {
             "name": "sidus/eav-model-bundle",
-            "version": "v1.2.1",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/VincentChalnot/SidusEAVModelBundle.git",
-                "reference": "a4f32696662777009a9808a438307afdf9c48201"
+                "reference": "8eda30f46b9d71765f80dbb6d67759b890ebb9c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VincentChalnot/SidusEAVModelBundle/zipball/a4f32696662777009a9808a438307afdf9c48201",
-                "reference": "a4f32696662777009a9808a438307afdf9c48201",
+                "url": "https://api.github.com/repos/VincentChalnot/SidusEAVModelBundle/zipball/8eda30f46b9d71765f80dbb6d67759b890ebb9c0",
+                "reference": "8eda30f46b9d71765f80dbb6d67759b890ebb9c0",
                 "shasum": ""
             },
             "require": {
@@ -3239,7 +3239,7 @@
                 "eav",
                 "model"
             ],
-            "time": "2017-06-22T09:59:22+00:00"
+            "time": "2017-07-11T10:29:51+00:00"
         },
         {
             "name": "sidus/file-upload-bundle",
@@ -3292,16 +3292,16 @@
         },
         {
             "name": "sidus/filter-bundle",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/VincentChalnot/SidusFilterBundle.git",
-                "reference": "339ac0b7a820282cf0589467df44bc82d5cc572c"
+                "reference": "fa423e2ceb58aafb72371a5734c6aa7fd829efb2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VincentChalnot/SidusFilterBundle/zipball/339ac0b7a820282cf0589467df44bc82d5cc572c",
-                "reference": "339ac0b7a820282cf0589467df44bc82d5cc572c",
+                "url": "https://api.github.com/repos/VincentChalnot/SidusFilterBundle/zipball/fa423e2ceb58aafb72371a5734c6aa7fd829efb2",
+                "reference": "fa423e2ceb58aafb72371a5734c6aa7fd829efb2",
                 "shasum": ""
             },
             "require": {
@@ -3335,7 +3335,7 @@
                 "filter",
                 "sort"
             ],
-            "time": "2017-06-09T15:29:57+00:00"
+            "time": "2017-06-23T13:02:17+00:00"
         },
         {
             "name": "sidus/publishing-bundle",
