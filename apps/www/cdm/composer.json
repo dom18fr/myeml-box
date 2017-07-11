@@ -32,7 +32,8 @@
 
         "cleverage/eav-manager": "1.2.*",
 
-        "symfony/assetic-bundle": "^2.8"
+        "symfony/assetic-bundle": "^2.8",
+        "api-platform/core": "^2.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
