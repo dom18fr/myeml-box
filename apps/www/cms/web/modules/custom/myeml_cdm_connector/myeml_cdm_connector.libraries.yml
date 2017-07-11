@@ -1,0 +1,7 @@
+messages:
+  version: 1.x
+  js:
+    js/messages.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings
