@@ -33,7 +33,7 @@
         "cleverage/eav-manager": "1.2.*",
 
         "symfony/assetic-bundle": "^2.8",
-        "api-platform/core": "^2.0"
+        "api-platform/core": "^2.0",
         "simplesamlphp/simplesamlphp": "^1.14"
     },
     "require-dev": {
@@ -60,7 +60,7 @@
         "post-install-cmd": [
             "@symfony-scripts",
             "bin/console doctrine:schema:update --force",
-            "bin/console sidus:data:fix-discriminator"
+            "bin/console sidus:data:fix-discriminator",
             "@symfony-scripts",
             "@simplesamlphp-scripts"
         ],

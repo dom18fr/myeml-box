@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "94f759a5c9c3dafe6ae20fde360aff9b",
+    "content-hash": "8debe5e3c10be3ffd6061a224d96a83c",
     "packages": [
         {
             "name": "api-platform/core",
@@ -204,16 +204,16 @@
         },
         {
             "name": "cleverage/eav-manager",
-            "version": "v1.2.0",
+            "version": "v1.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cleverage/eav-manager.git",
-                "reference": "06f289479d428ec7a82297916fe1dffe38fc30c3"
+                "reference": "842aa78a89724ee9a35f6dc435b816de503d336f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cleverage/eav-manager/zipball/06f289479d428ec7a82297916fe1dffe38fc30c3",
-                "reference": "06f289479d428ec7a82297916fe1dffe38fc30c3",
+                "url": "https://api.github.com/repos/cleverage/eav-manager/zipball/842aa78a89724ee9a35f6dc435b816de503d336f",
+                "reference": "842aa78a89724ee9a35f6dc435b816de503d336f",
                 "shasum": ""
             },
             "require": {
@@ -227,7 +227,6 @@
                 "sidus/eav-datagrid-bundle": "1.2.*",
                 "sidus/eav-filter-bundle": "1.2.*",
                 "sidus/eav-model-bundle": "1.2.*",
-                "sidus/eav-variant-bundle": "1.2.*",
                 "sidus/file-upload-bundle": "1.2.*",
                 "sidus/filter-bundle": "1.2.*",
                 "sidus/publishing-bundle": "1.2.*",
@@ -259,20 +258,20 @@
                 "manager",
                 "model"
             ],
-            "time": "2017-06-13T17:23:50+00:00"
+            "time": "2017-07-03T14:35:29+00:00"
         },
         {
             "name": "cleverage/process-bundle",
-            "version": "v1.0.0",
+            "version": "v1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cleverage/process-bundle.git",
-                "reference": "12e7111fb51f27af6fa25c8e7396f227de7a9c74"
+                "reference": "6118651edc46a08ef080b376def2cd1e23ae222f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cleverage/process-bundle/zipball/12e7111fb51f27af6fa25c8e7396f227de7a9c74",
-                "reference": "12e7111fb51f27af6fa25c8e7396f227de7a9c74",
+                "url": "https://api.github.com/repos/cleverage/process-bundle/zipball/6118651edc46a08ef080b376def2cd1e23ae222f",
+                "reference": "6118651edc46a08ef080b376def2cd1e23ae222f",
                 "shasum": ""
             },
             "require": {
@@ -314,7 +313,7 @@
                 "task",
                 "transformation"
             ],
-            "time": "2017-06-09T17:03:01+00:00"
+            "time": "2017-06-29T12:37:08+00:00"
         },
         {
             "name": "components/jquery",
@@ -1950,16 +1949,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.22.1",
+            "version": "1.23.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "1e044bc4b34e91743943479f1be7a1d5eb93add0"
+                "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1e044bc4b34e91743943479f1be7a1d5eb93add0",
-                "reference": "1e044bc4b34e91743943479f1be7a1d5eb93add0",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
+                "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
                 "shasum": ""
             },
             "require": {
@@ -1980,7 +1979,7 @@
                 "phpunit/phpunit-mock-objects": "2.3.0",
                 "ruflin/elastica": ">=0.90 <3.0",
                 "sentry/sentry": "^0.13",
-                "swiftmailer/swiftmailer": "~5.3"
+                "swiftmailer/swiftmailer": "^5.3|^6.0"
             },
             "suggest": {
                 "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
@@ -2024,7 +2023,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2017-03-13T07:08:03+00:00"
+            "time": "2017-06-19T01:22:40+00:00"
         },
         {
             "name": "mopa/bootstrap-bundle",
@@ -2756,6 +2755,47 @@
             "time": "2015-08-10T12:35:38+00:00"
         },
         {
+            "name": "robrichards/xmlseclibs",
+            "version": "1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/robrichards/xmlseclibs.git",
+                "reference": "79fb5e03c4ee4dc3ec77e4b2628231374364a017"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/robrichards/xmlseclibs/zipball/79fb5e03c4ee4dc3ec77e4b2628231374364a017",
+                "reference": "79fb5e03c4ee4dc3ec77e4b2628231374364a017",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">= 5.2"
+            },
+            "suggest": {
+                "ext/mcrypt": "MCrypt extension",
+                "ext/openssl": "OpenSSL extension"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "A PHP library for XML Security",
+            "homepage": "https://github.com/robrichards/xmlseclibs",
+            "keywords": [
+                "security",
+                "signature",
+                "xml",
+                "xmldsig"
+            ],
+            "time": "2016-09-08T13:31:44+00:00"
+        },
+        {
             "name": "sensio/distribution-bundle",
             "version": "v5.0.20",
             "source": {
@@ -3011,16 +3051,16 @@
         },
         {
             "name": "sidus/eav-bootstrap-bundle",
-            "version": "v1.2.1",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/VincentChalnot/SidusEAVBootstrapBundle.git",
-                "reference": "84d712c920166be275a157defe5920b2510b421d"
+                "reference": "26eb17c851f394ac20b7355bbbfd32049145514d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VincentChalnot/SidusEAVBootstrapBundle/zipball/84d712c920166be275a157defe5920b2510b421d",
-                "reference": "84d712c920166be275a157defe5920b2510b421d",
+                "url": "https://api.github.com/repos/VincentChalnot/SidusEAVBootstrapBundle/zipball/26eb17c851f394ac20b7355bbbfd32049145514d",
+                "reference": "26eb17c851f394ac20b7355bbbfd32049145514d",
                 "shasum": ""
             },
             "require": {
@@ -3057,7 +3097,7 @@
                 "bootstrap",
                 "eav"
             ],
-            "time": "2017-06-14T10:02:06+00:00"
+            "time": "2017-06-28T17:33:48+00:00"
         },
         {
             "name": "sidus/eav-datagrid-bundle",
@@ -3153,16 +3193,16 @@
         },
         {
             "name": "sidus/eav-model-bundle",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/VincentChalnot/SidusEAVModelBundle.git",
-                "reference": "803a2b008e317967ff9f277cb1a147312ecb0fe9"
+                "reference": "a4f32696662777009a9808a438307afdf9c48201"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VincentChalnot/SidusEAVModelBundle/zipball/803a2b008e317967ff9f277cb1a147312ecb0fe9",
-                "reference": "803a2b008e317967ff9f277cb1a147312ecb0fe9",
+                "url": "https://api.github.com/repos/VincentChalnot/SidusEAVModelBundle/zipball/a4f32696662777009a9808a438307afdf9c48201",
+                "reference": "a4f32696662777009a9808a438307afdf9c48201",
                 "shasum": ""
             },
             "require": {
@@ -3182,7 +3222,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL-2.0"
+                "GPL-3.0"
             ],
             "authors": [
                 {
@@ -3199,65 +3239,20 @@
                 "eav",
                 "model"
             ],
-            "time": "2017-06-13T16:22:29+00:00"
-        },
-        {
-            "name": "sidus/eav-variant-bundle",
-            "version": "v1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/VincentChalnot/SidusEAVVariantBundle.git",
-                "reference": "a5401483864d4e8b3f84592d2af7322da5aeef5c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/VincentChalnot/SidusEAVVariantBundle/zipball/a5401483864d4e8b3f84592d2af7322da5aeef5c",
-                "reference": "a5401483864d4e8b3f84592d2af7322da5aeef5c",
-                "shasum": ""
-            },
-            "require": {
-                "sidus/eav-bootstrap-bundle": "1.2.*",
-                "sidus/eav-model-bundle": "1.2.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Sidus\\EAVVariantBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Vincent Chalnot",
-                    "email": "vincent@sidus.fr",
-                    "homepage": "http://chalnot.fr",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Add the possibility to define variant associations in the EAV model with axles and validation on unique combination",
-            "homepage": "https://github.com/VincentChalnot/SidusEAVVariantBundle",
-            "keywords": [
-                "axles",
-                "eav",
-                "variant"
-            ],
-            "time": "2017-06-13T17:35:06+00:00"
+            "time": "2017-06-22T09:59:22+00:00"
         },
         {
             "name": "sidus/file-upload-bundle",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/VincentChalnot/SidusFileUploadBundle.git",
-                "reference": "6dd92c887231ad32d0922f7dec50e9f16817f6a5"
+                "reference": "242b37b6b805e6fc7dc7abff4f6f3f703f9371f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VincentChalnot/SidusFileUploadBundle/zipball/6dd92c887231ad32d0922f7dec50e9f16817f6a5",
-                "reference": "6dd92c887231ad32d0922f7dec50e9f16817f6a5",
+                "url": "https://api.github.com/repos/VincentChalnot/SidusFileUploadBundle/zipball/242b37b6b805e6fc7dc7abff4f6f3f703f9371f3",
+                "reference": "242b37b6b805e6fc7dc7abff4f6f3f703f9371f3",
                 "shasum": ""
             },
             "require": {
@@ -3293,7 +3288,7 @@
                 "upload",
                 "uploader"
             ],
-            "time": "2017-05-12T15:31:37+00:00"
+            "time": "2017-06-22T10:20:20+00:00"
         },
         {
             "name": "sidus/filter-bundle",
@@ -3387,6 +3382,126 @@
                 "publishing"
             ],
             "time": "2017-03-31T13:43:54+00:00"
+        },
+        {
+            "name": "simplesamlphp/saml2",
+            "version": "v1.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/simplesamlphp/saml2.git",
+                "reference": "2a2bd4398257cbe72251c68348be72707cc77262"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/simplesamlphp/saml2/zipball/2a2bd4398257cbe72251c68348be72707cc77262",
+                "reference": "2a2bd4398257cbe72251c68348be72707cc77262",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-openssl": "*",
+                "php": ">=5.3.3",
+                "psr/log": "~1.0",
+                "robrichards/xmlseclibs": "^1.3"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpmd/phpmd": "~1.5",
+                "phpunit/phpunit": "~3.7",
+                "satooshi/php-coveralls": "~0.6.1",
+                "sebastian/phpcpd": "~1.4",
+                "sensiolabs/security-checker": "~1.1",
+                "squizlabs/php_codesniffer": "~1.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "SAML2_": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Andreas Åkre Solberg",
+                    "email": "andreas.solberg@uninett.no"
+                }
+            ],
+            "description": "SAML2 PHP library from SimpleSAMLphp",
+            "time": "2016-12-02T12:45:13+00:00"
+        },
+        {
+            "name": "simplesamlphp/simplesamlphp",
+            "version": "v1.14.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/simplesamlphp/simplesamlphp.git",
+                "reference": "0329e7fd0e9f356211a002f5b7c79da4543b5efe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/simplesamlphp/simplesamlphp/zipball/0329e7fd0e9f356211a002f5b7c79da4543b5efe",
+                "reference": "0329e7fd0e9f356211a002f5b7c79da4543b5efe",
+                "shasum": ""
+            },
+            "require": {
+                "ext-date": "*",
+                "ext-dom": "*",
+                "ext-hash": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
+                "ext-pcre": "*",
+                "ext-spl": "*",
+                "ext-zlib": "*",
+                "php": ">=5.3",
+                "robrichards/xmlseclibs": "~1.4.1",
+                "simplesamlphp/saml2": "~1.9.1",
+                "whitehat101/apr1-md5": "~1.0"
+            },
+            "require-dev": {
+                "ext-pdo_sqlite": "*",
+                "phpunit/phpunit": "~3.7",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-0": {
+                    "SimpleSAML": "lib/"
+                },
+                "files": [
+                    "lib/_autoload_modules.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Olav Morken",
+                    "email": "olav.morken@uninett.no"
+                },
+                {
+                    "name": "Andreas Åkre Solberg",
+                    "email": "andreas.solberg@uninett.no"
+                }
+            ],
+            "description": "A PHP implementation of SAML 2.0 service provider and identity provider functionality. And is also compatible with Shibboleth 1.3 and 2.0.",
+            "homepage": "http://simplesamlphp.org",
+            "keywords": [
+                "OpenId",
+                "SAML2",
+                "aselect",
+                "idp",
+                "oauth",
+                "shibboleth",
+                "sp",
+                "ws-federation"
+            ],
+            "time": "2017-05-05T10:52:35+00:00"
         },
         {
             "name": "stfalcon/tinymce-bundle",
@@ -4030,16 +4145,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v3.3.2",
+            "version": "v3.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "82bd7c039214b34bb5d12c04f996f05f6581c49f"
+                "reference": "82f7cba3c272bcd266f2d27ad6f07832c2eb3a1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/82bd7c039214b34bb5d12c04f996f05f6581c49f",
-                "reference": "82bd7c039214b34bb5d12c04f996f05f6581c49f",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/82f7cba3c272bcd266f2d27ad6f07832c2eb3a1c",
+                "reference": "82f7cba3c272bcd266f2d27ad6f07832c2eb3a1c",
                 "shasum": ""
             },
             "require": {
@@ -4148,7 +4263,6 @@
                     "Symfony\\Bridge\\Doctrine\\": "src/Symfony/Bridge/Doctrine/",
                     "Symfony\\Bridge\\Monolog\\": "src/Symfony/Bridge/Monolog/",
                     "Symfony\\Bridge\\ProxyManager\\": "src/Symfony/Bridge/ProxyManager/",
-                    "Symfony\\Bridge\\Swiftmailer\\": "src/Symfony/Bridge/Swiftmailer/",
                     "Symfony\\Bridge\\Twig\\": "src/Symfony/Bridge/Twig/",
                     "Symfony\\Bundle\\": "src/Symfony/Bundle/",
                     "Symfony\\Component\\": "src/Symfony/Component/"
@@ -4179,7 +4293,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2017-06-06T04:00:14+00:00"
+            "time": "2017-07-05T13:28:34+00:00"
         },
         {
             "name": "thomaspark/bootswatch",
@@ -4411,6 +4525,50 @@
             "time": "2017-02-10T16:54:59+00:00"
         },
         {
+            "name": "whitehat101/apr1-md5",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/whitehat101/apr1-md5.git",
+                "reference": "8b261c9fc0481b4e9fa9d01c6ca70867b5d5e819"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/whitehat101/apr1-md5/zipball/8b261c9fc0481b4e9fa9d01c6ca70867b5d5e819",
+                "reference": "8b261c9fc0481b4e9fa9d01c6ca70867b5d5e819",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.0.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WhiteHat101\\Crypt\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeremy Ebler",
+                    "email": "jebler@gmail.com"
+                }
+            ],
+            "description": "Apache's APR1-MD5 algorithm in pure PHP",
+            "homepage": "https://github.com/whitehat101/apr1-md5",
+            "keywords": [
+                "MD5",
+                "apr1"
+            ],
+            "time": "2015-02-11T11:06:42+00:00"
+        },
+        {
             "name": "willdurand/jsonp-callback-validator",
             "version": "v1.1.0",
             "source": {
@@ -4560,16 +4718,16 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v3.3.2",
+            "version": "v3.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "acae7416018ebe5a7a2d79b4221203b2b8aca5d3"
+                "reference": "c2c124b7f9de79f4a64dc011f041a3a2c768b913"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/acae7416018ebe5a7a2d79b4221203b2b8aca5d3",
-                "reference": "acae7416018ebe5a7a2d79b4221203b2b8aca5d3",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/c2c124b7f9de79f4a64dc011f041a3a2c768b913",
+                "reference": "c2c124b7f9de79f4a64dc011f041a3a2c768b913",
                 "shasum": ""
             },
             "require": {
@@ -4618,7 +4776,7 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2017-06-01T14:45:22+00:00"
+            "time": "2017-06-12T13:35:45+00:00"
         }
     ],
     "aliases": [],
