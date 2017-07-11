@@ -1,0 +1,34 @@
+services:
+    event.search_filter:
+        parent: api_platform.doctrine.orm.search_filter
+        arguments:
+            -
+                id: exact
+        tags:
+            - { name: api_platform.filter, id: event.search }
+
+    event.eav_search_filter:
+        parent: eavmanager_api_platform.filter.search
+        arguments:
+            -
+                name: partial
+                code: exact
+        tags:
+            - { name: api_platform.filter, id: event.eav_search }
+
+    event.eav_order_filter:
+        parent: eavmanager_api_platform.filter.order
+        arguments:
+            -
+                name: ASC
+                code: ASC
+        tags:
+            - { name: api_platform.filter, id: event.eav_order }
+
+    event.eav_range_filter:
+        parent: eavmanager_api_platform.filter.range
+        arguments:
+            -
+                startDateTime: ~
+        tags:
+            - { name: api_platform.filter, id: event.eav_range }

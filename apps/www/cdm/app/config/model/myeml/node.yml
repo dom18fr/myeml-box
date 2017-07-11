@@ -1,6 +1,7 @@
 sidus_eav_model:
     families:
         Node:
+            data_class: MyEML\EAVModelBundle\Entity\Node
             attributeAsLabel: nodeTitle
             attributes:
                 nodeTitle:
