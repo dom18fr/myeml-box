@@ -7,6 +7,7 @@ label: Local
 folder: ../config/local
 module:
   devel: 0
+  devel_generate: 0
 theme: {  }
 blacklist:
   - devel.settings
