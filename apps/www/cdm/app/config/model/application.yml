@@ -4,7 +4,7 @@ parameters:
     sidus_eav_model.context.form_type: MyEML\EAVModelBundle\Form\ContextSwitcherType
     sidus_eav_model.context.default_context:
         campus: lyon
-        program: master
+        program: m2
         locale: fr_FR
         profile: student
 sidus_eav_model:
@@ -25,3 +25,5 @@ imports:
 
     # Model configuration, order of files matters
     - { resource: myeml/node.yml }
+
+    - { resource: api.yml }

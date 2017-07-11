@@ -1,0 +1,8 @@
+api_platform:
+    title: 'MyEML'
+    description: 'Clever Data Manager API'
+    version: '0.0.1'
+    collection:
+        pagination:
+            client_items_per_page: true
+            items_per_page_parameter_name: itemsPerPage

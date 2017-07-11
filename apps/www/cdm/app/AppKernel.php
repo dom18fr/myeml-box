@@ -20,12 +20,15 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             // Not part of the standard distribution anymore:
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+
+            new ApiPlatform\Core\Bridge\Symfony\Bundle\ApiPlatformBundle(),
         ];
 
         $eavBundles = CleverAge\EAVManager\EAVKernelBundleLoader::getBundles();
 
         $projectBundles = [
             new MyEML\EAVModelBundle\MyEMLEAVModelBundle(),
+            new MyEML\ApiBundle\MyEMLApiBundle(),
         ];
 
         $devBundles = [];

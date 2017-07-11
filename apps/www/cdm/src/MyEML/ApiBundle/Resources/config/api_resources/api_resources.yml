@@ -1,0 +1,24 @@
+resources:
+    # EAV Model
+    Sidus\EAVModelBundle\Model\Family:
+        collectionOperations:
+            get:
+                method: 'GET'
+        itemOperations:
+            get:
+                method: 'GET'
+
+    # EAV Data
+    MyEML\EAVModelBundle\Entity\Node: ~
+
+    # EAV Manager
+    CleverAge\EAVManager\UserBundle\Entity\User:
+        collectionOperations:
+            get:
+                method: 'GET'
+        itemOperations:
+            get:
+                method: 'GET'
+            profile:
+                method: 'GET'
+                path: /users/profile
