@@ -29,6 +29,7 @@ class AppKernel extends Kernel
         $projectBundles = [
             new MyEML\EAVModelBundle\MyEMLEAVModelBundle(),
             new MyEML\ApiBundle\MyEMLApiBundle(),
+            new MyEML\AdminBundle\MyEMLAdminBundle(),
         ];
 
         $devBundles = [];

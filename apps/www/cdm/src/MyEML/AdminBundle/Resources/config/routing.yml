@@ -1,0 +1,5 @@
+myeml.treeview:
+    path: /treeview
+    defaults: { _controller: MyEMLAdminBundle:TreeView:index }
+    options:
+        expose: true

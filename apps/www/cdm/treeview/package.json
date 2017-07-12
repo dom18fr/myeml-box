@@ -16,7 +16,7 @@
     "webpack-dev-server": "^2.5.1"
   },
   "scripts": {
-    "build": "webpack --progress && cp dist/treeview.js ../web/assets/treeview.js",
+    "build": "webpack --progress && cp dist/treeview.js ../web/js/treeview.js",
     "dev": "webpack-dev-server --progress --content-base ./dist --inline --hot --open"
   }
 }
