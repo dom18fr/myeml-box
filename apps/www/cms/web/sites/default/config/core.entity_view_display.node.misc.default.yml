@@ -1,0 +1,26 @@
+uuid: 3be2980a-2814-4660-a839-94ef546f190e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.misc.body
+    - node.type.misc
+  module:
+    - text
+    - user
+id: node.misc.default
+targetEntityType: node
+bundle: misc
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden: {  }

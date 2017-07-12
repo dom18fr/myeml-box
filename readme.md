@@ -38,6 +38,19 @@ cd web
 cp sites/default/default.local.settings.php sites/default/local.settings.php
 ```
 
+### Configuration pour le dévelopement local
+
+Ajouter les lignes suivantes dans le fichier `sites/default/local.settings.php` :
+
+```
+// This enables the config_split module
+$config['config_split.config_split.local']['status'] = TRUE;
+
+// Allow Drupal to be accessed from an iframe by CDM (don't set the variable to
+// allow any origin).
+// $config['myeml_cdm_connector.conf']['allowed_origin'] = 'http://local.cdm.makersboard.me';
+```
+
 ### Installation de l'instance drupal en BDD
 
 ```
@@ -45,6 +58,9 @@ drush site-install minimal --account-pass=admin -y
 chmod 755 sites/default
 chmod -R 755 sites/default/files
 drush config-set system.site uuid b126bf6f-d791-4452-8601-c1c69a9fc96c -y
+drush cim -y
+
+# Relancer une deuxième fois pour utiliser Config Split
 drush cim -y
 ```
 

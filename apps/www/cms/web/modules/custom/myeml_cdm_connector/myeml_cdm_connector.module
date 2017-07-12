@@ -57,12 +57,14 @@ function myeml_cdm_connector_get_messages() {
  * Implements hook_page_attachments().
  */
 function myeml_cdm_connector_page_attachments(array &$attachments) {
+  $allowed_origin = \Drupal::config('myeml_cdm_connector.conf')->get('allowed_origin');
+  $target = !empty($allowed_origin) ? $allowed_origin : '*';
+  $attachments['#attached']['drupalSettings']['myeml_cdm_connector']['target'] = $target;
+
   $messages = myeml_cdm_connector_get_messages();
   if (!empty($messages)) {
-    $attachments['#attached']['drupalSettings']['myeml_cdm_connector'] = [
-      'messages' => json_encode($messages),
-      'target' => '*',
-    ];
-    $attachments['#attached']['library'][] = 'myeml_cdm_connector/messages';
+    $attachments['#attached']['drupalSettings']['myeml_cdm_connector']['messages'] = json_encode($messages);
   }
+
+  $attachments['#attached']['library'][] = 'myeml_cdm_connector/messages';
 }

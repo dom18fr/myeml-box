@@ -1,10 +1,16 @@
 module:
   block: 0
+  chosen: 0
+  chosen_lib: 0
+  chosen_test: 0
+  config_filter: 0
+  config_split: 0
   dblog: 0
   dynamic_page_cache: 0
   field: 0
   file: 0
   filter: 0
+  kint: 0
   myeml_cdm_connector: 0
   node: 0
   page_cache: 0
@@ -12,6 +18,7 @@ module:
   text: 0
   update: 0
   user: 0
+  views: 10
   minimal: 1000
 theme:
   stark: 0
