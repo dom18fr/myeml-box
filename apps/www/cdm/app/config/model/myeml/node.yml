@@ -7,14 +7,26 @@ sidus_eav_model:
                 nodeTitle:
                     type: string
                     required: true
-                    context_mask:
-                        - campus
-                        - program
-                        - locale
-                        - profile
+                    context_mask: '%myeml.context_mask%'
                 children:
                     type: data_selector
+                    context_mask: '%myeml.context_mask%'
                     multiple: true
                     options:
                         allowed_families:
                             - Node
+                        serializer:
+                            by_reference: false
+                            by_short_reference: false
+                    form_options:
+                        allow_edit: true
+                        allow_add: true
+                parentNodes:
+                    type: data_selector
+                    multiple: true
+                    form_options:
+                        disabled: true
+                nodeIsRoot:
+                    type: switch
+                    context_mask: '%myeml.context_mask%'
+                    default: false

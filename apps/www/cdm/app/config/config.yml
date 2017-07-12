@@ -9,6 +9,11 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    myeml.context_mask:
+        - campus
+        - program
+        - locale
+        - profile
 
 framework:
     #esi: ~

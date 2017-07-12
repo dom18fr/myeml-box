@@ -22938,7 +22938,10 @@ var _MyEMLTreeView2 = _interopRequireDefault(_MyEMLTreeView);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_MyEMLTreeView2.default, null), document.getElementById('myeml-treeview'));
+var container = document.getElementById('myeml-treeview');
+var apiUrl = container.getAttribute('data-api-url');
+
+_reactDom2.default.render(_react2.default.createElement(_MyEMLTreeView2.default, { apiUrl: apiUrl }), container);
 
 /***/ }),
 /* 238 */
@@ -35077,6 +35080,8 @@ var MyEMLTreeView = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (MyEMLTreeView.__proto__ || Object.getPrototypeOf(MyEMLTreeView)).call(this, props));
 
+    _this.tree = [];
+
     _this.state = {
       treeData: [],
       loading: true
@@ -35089,15 +35094,9 @@ var MyEMLTreeView = function (_Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      this.getTreeData().then(function (json) {
-        console.log(json);
+      this.getTreeData().then(function (treeData) {
         _this2.setState({
-          treeData: [{
-            title: 'Chicken',
-            children: [{
-              title: 'Egg'
-            }]
-          }],
+          treeData: treeData,
           loading: false
         });
       });
@@ -35105,17 +35104,48 @@ var MyEMLTreeView = function (_Component) {
   }, {
     key: 'getTreeData',
     value: function getTreeData() {
+      var _this3 = this;
+
       return (0, _axios2.default)({
         method: 'get',
-        url: '/app_dev.php/api/nodes'
+        url: this.props.apiUrl
+      }).then(function (json) {
+        if (200 === json.status && json.hasOwnProperty('data')) {
+          if (json.data.hasOwnProperty('hydra:member')) {
+
+            return _this3.buildTree(json.data['hydra:member']);
+          }
+
+          return [];
+        }
+        console.error('Fetched data didn\'t match expected content');
       }).catch(function (error) {
-        error.log('Error when fetching data');
+        console.error(error);
       });
+    }
+  }, {
+    key: 'buildTree',
+    value: function buildTree(data) {
+      var tree = [];
+      var eavNode = void 0;
+      for (var i in data) {
+        var _eavNode = data[i];
+        console.log(_eavNode);
+        var node = {
+          title: _eavNode.nodeTitle
+        };
+        if (_eavNode.hasOwnProperty('children') && 0 < _eavNode.children.length) {
+          node.children = this.buildTree(_eavNode.children);
+        }
+        tree.push(node);
+      };
+
+      return tree;
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       return _react2.default.createElement(
         'div',
@@ -35124,9 +35154,14 @@ var MyEMLTreeView = function (_Component) {
           'span',
           null,
           '[LOADING ...]'
-        ) : _react2.default.createElement(_reactSortableTree2.default, { treeData: this.state.treeData, onChange: function onChange(treeData) {
-            return _this3.setState({ treeData: treeData });
-          } })
+        ) : _react2.default.createElement(_reactSortableTree2.default, {
+          treeData: this.state.treeData,
+          onChange: function onChange(treeData) {
+            return _this4.setState({ treeData: treeData });
+          },
+          canDrag: false,
+          canDrop: false
+        })
       );
     }
   }]);

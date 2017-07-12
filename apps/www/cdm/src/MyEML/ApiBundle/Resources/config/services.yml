@@ -1,4 +1,8 @@
 services:
-#    my_eml_api.example:
-#        class: MyEMLApiBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    myeml.eav_boolean_filter:
+        parent: eavmanager_api_platform.filter.boolean
+        arguments:
+            -
+                nodeIsRoot: ~
+        tags:
+            - { name: api_platform.filter, id: myeml.eav_boolean }

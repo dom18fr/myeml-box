@@ -5,13 +5,13 @@
 {% set admin_trans_key = 'admin.' ~ admin.code ~ '.' ~ admin.currentAction.code ~ '.' %}
 
 {% block tg_center %}
+    {# Get familyCode from context varaibles (admin ?) #}
     <div class="btn-toolbar pull-right">
         <a class="btn btn-success" href="{{ path('sidus_admin.tree.list', {familyCode: 'Node'}) }}">List view</a>
     </div>
     <h3>Tree of Nodes</h3>
     <hr>
-    <div id="myeml-treeview"></div>
+    {# @todo: properly create data-api-url #}
+    <div id="myeml-treeview" data-api-url="http://local.cdm.makersboard.me/app_dev.php/api/nodes?nodeIsRoot=1"></div>
     <script src="{{ asset('js/treeview.js') }}" type="text/javascript"></script>
 {% endblock %}
-
-
