@@ -1,0 +1,19 @@
+{% set baseTemplate = baseTemplate|default(admin.baseTemplate) %}
+{% extends isAjax ? 'CleverAgeEAVManagerLayoutBundle::empty_layout.html.twig'
+: baseTemplate|default('CleverAgeEAVManagerLayoutBundle::layout.html.twig') %}
+
+{% set admin_trans_key = 'admin.' ~ admin.code ~ '.' ~ admin.currentAction.code ~ '.' %}
+
+{% block tg_center %}
+    {% use '@CleverAgeEAVManagerAdmin/Base/partials/list.blocks.html.twig' %}
+    {% if isModal %}
+        {{ block('list_modal') }}
+    {% else %}
+        <div class="btn-toolbar pull-right">
+            <a class="btn btn-success" href="{{ path('sidus_admin.tree.treeview', {familyCode: 'Node'}) }}">Tree view</a>
+        </div>
+        <h3>{{ block('list_title') }}</h3>
+        <hr>
+        {{ block('datagrid') }}
+    {% endif %}
+{% endblock %}
