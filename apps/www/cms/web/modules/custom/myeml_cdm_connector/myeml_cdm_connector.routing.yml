@@ -1,0 +1,6 @@
+myeml_cdm_connector.node_view:
+  path: '/node-cdm/{nid}'
+  defaults:
+    _controller: '\Drupal\myeml_cdm_connector\Controller\MyEmlCdmConnectorController::nodeView'
+  requirements:
+    _access: 'TRUE'
