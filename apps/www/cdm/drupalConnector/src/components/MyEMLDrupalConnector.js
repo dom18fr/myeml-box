@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component} from 'react';
+import ReactDOM from 'react-dom';
 
 export default class MyEMLDrupalConnector extends Component {
 
@@ -20,40 +21,66 @@ export default class MyEMLDrupalConnector extends Component {
     }
 
     this.state = state;
-    this.createNew = this.createNew.bind(this);
-    this.cancel = this.cancel.bind(this);
+    this.onCreateNew = this.onCreateNew.bind(this);
+    this.onCancel = this.onCancel.bind(this);
+    this.onParentSubmit = this.onParentSubmit.bind(this);
   }
 
-  createNew() {
+  onCreateNew() {
     this.setState({action: 'add'});
   }
 
-  cancel() {
+  onCancel() {
     this.setState({action: null});
+  }
+
+  onParentSubmit(event) {
+    console.log(event);
+  }
+
+  componentDidMount() {
+    document
+        .getElementById('myeml-drupal-connector')
+        .addEventListener('parent-submit', this.onParentSubmit);
+  }
+
+  componentWillUnmount() {
+    document
+        .removeEventListener("parent-submit", this.onParentSubmit);
   }
 
   render () {
     let iframeUrl = this.props.baseUrl;
     if ('edit' === this.state.action) {
-      iframeUrl = [iframeUrl, this.state.drupalEntityType, this.state.drupalEntityId, 'edit'].join('/');
+      iframeUrl = [
+        iframeUrl, 
+        this.state.drupalEntityType, 
+        this.state.drupalEntityId, 
+        'edit'
+      ].join('/');
     }
     if ('add' === this.state.action) {
-      iframeUrl = [iframeUrl, 'node', 'add'].join('/');
+      iframeUrl = [
+        iframeUrl, 
+        'node', 
+        'add'
+      ].join('/');
     }
     return (
         <div>
             <div className="btn-toolbar">
-                { null === this.state.action ? <button type="button" className="btn btn-success btn-xs" onClick={this.createNew}>Create new</button> : null } 
+                { null === this.state.action ? <button type="button" className="btn btn-success btn-xs" onClick={this.onCreateNew}>Create new</button> : null } 
                 { null === this.state.action ? <button className="btn btn-default btn-xs">Create from existing</button> : null }
                 { null === this.state.action ? <button className="btn btn-info btn-xs">Reuse existing</button> : null }
                 { 'edit' === this.state.action ? <button className="btn btn-warning btn-xs">Unlink</button> : null }
                 { 'edit' === this.state.action ? <button className="btn btn-danger btn-xs">Delete</button> : null }
-                { 'add' === this.state.action ? <button className="btn btn-warning btn-xs" onClick={this.cancel}>Cancel</button> : null }
+                { 'add' === this.state.action ? <button className="btn btn-warning btn-xs" onClick={this.onCancel}>Cancel</button> : null }
             </div>
             { 
                 null === this.state.action ? 
                 null : 
                 <iframe 
+                    id="drupal-connector-iframe"
                     src={ iframeUrl } 
                     style={{ width: '100%', height: '800px' }}
                 /> 
