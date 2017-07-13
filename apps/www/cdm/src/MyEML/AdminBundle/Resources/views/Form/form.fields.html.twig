@@ -1,5 +1,6 @@
-{% extends 'SidusEAVBootstrapBundle:Form:fields.html.twig' %}
-
 {% block drupal_connector_widget %}
-    YOLO
+    <div id="myeml-drupal-connector">
+        {%- set type = 'hidden' -%}
+        {{ block('form_widget_simple') }}
+    </div>
 {% endblock drupal_connector_widget %}

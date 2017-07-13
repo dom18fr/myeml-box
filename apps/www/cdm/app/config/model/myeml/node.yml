@@ -45,6 +45,7 @@ sidus_eav_model:
                     context_mask: '%myeml.context_mask%'
                 nodeRoles:
                     type: choice
+                    multiple: true
                     form_options:
                         choices:
                             Page: page
