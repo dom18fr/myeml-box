@@ -50,19 +50,22 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
-            "php bin/console assetic:dump"
+            "php bin/console assetic:dump",
+            "bin/console doctrine:schema:update --force",
+            "bin/console sidus:data:fix-discriminator"
         ],
         "simplesamlphp-scripts": [
             "cp simplesamlphp/config/* vendor/simplesamlphp/simplesamlphp/config/",
             "cp simplesamlphp/metadata/* vendor/simplesamlphp/simplesamlphp/metadata/",
-            "mkdir vendor/simplesamlphp/simplesamlphp/cert/ && cp simplesamlphp/cert/* vendor/simplesamlphp/simplesamlphp/cert/"
+            "mkdir -p vendor/simplesamlphp/simplesamlphp/cert/ && cp simplesamlphp/cert/* vendor/simplesamlphp/simplesamlphp/cert/"
+        ],
+        "react-scripts": [
+            "cd treeview && yarn install && npm run build"
         ],
         "post-install-cmd": [
             "@symfony-scripts",
-            "bin/console doctrine:schema:update --force",
-            "bin/console sidus:data:fix-discriminator",
-            "@symfony-scripts",
-            "@simplesamlphp-scripts"
+            "@simplesamlphp-scripts",
+            "@react-scripts"
         ],
         "post-update-cmd": [
             "@symfony-scripts"

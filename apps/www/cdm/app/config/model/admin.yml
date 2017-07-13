@@ -1,14 +1,18 @@
 sidus_admin:
     configurations:
         tree:
-            controller: '%eav.controller%'
+            controller: MyEMLAdminBundle:TreeView
             entity: '%sidus_data_class%'
             prefix: /tree
             actions:
                 index:
                     path:     /
+                treeview:
+                    path:     /{familyCode}/treeview
+                    template: MyEMLAdminBundle:TreeView:treeview.html.twig
                 list:
                     path:     /{familyCode}/list
+                    template: MyEMLAdminBundle:Base:list.html.twig
                 create:
                     path:     /{familyCode}/create
                     form_type: '%eav_form.type%'

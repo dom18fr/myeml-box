@@ -9,7 +9,10 @@ resources:
                 method: 'GET'
 
     # EAV Data
-    MyEML\EAVModelBundle\Entity\Node: ~
+    MyEML\EAVModelBundle\Entity\Node:
+        attributes:
+            filters:
+                - myeml.eav_boolean
 
     # EAV Manager
     CleverAge\EAVManager\UserBundle\Entity\User:
