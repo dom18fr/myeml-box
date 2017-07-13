@@ -1,5 +1,6 @@
 {% block drupal_connector_widget %}
-    <div id="myeml-drupal-connector">
+    {# @todo: properly set a parameter for cms url #}
+    <div id="myeml-drupal-connector" data-base-url="http://local.cms.makersboard.me">
         {%- set type = 'hidden' -%}
         {{ block('form_widget_simple') }}
     </div>

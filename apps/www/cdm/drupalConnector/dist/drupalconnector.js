@@ -9773,10 +9773,17 @@ var _MyEMLDrupalConnector2 = _interopRequireDefault(_MyEMLDrupalConnector);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// @todo: get all relevant information about actual hidden field to render it thru react
 var container = document.getElementById('myeml-drupal-connector');
+var input = document.querySelector('#myeml-drupal-connector>input[type=hidden]');
 
-_reactDom2.default.render(_react2.default.createElement(_MyEMLDrupalConnector2.default, null), container);
+var baseUrl = container.getAttribute('data-base-url');
+var inputData = {
+  value: input.getAttribute('value'),
+  name: input.getAttribute('name'),
+  id: input.getAttribute('id')
+};
+
+_reactDom2.default.render(_react2.default.createElement(_MyEMLDrupalConnector2.default, { inputData: inputData, baseUrl: baseUrl }), container);
 
 /***/ }),
 /* 83 */
@@ -22435,16 +22442,95 @@ var MyEMLDrupalConnector = function (_Component) {
   function MyEMLDrupalConnector(props) {
     _classCallCheck(this, MyEMLDrupalConnector);
 
-    return _possibleConstructorReturn(this, (MyEMLDrupalConnector.__proto__ || Object.getPrototypeOf(MyEMLDrupalConnector)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (MyEMLDrupalConnector.__proto__ || Object.getPrototypeOf(MyEMLDrupalConnector)).call(this, props));
+
+    var state = {
+      drupalEntityType: null,
+      drupalEntityId: null,
+      action: null,
+      inputValue: null !== _this.props.inputData.value ? _this.props.inputData.value : ''
+    };
+
+    if (null !== _this.props.inputData.value) {
+      var splittedValue = _this.props.inputData.value.split('--');
+      state.drupalEntityType = 'undefined' !== typeof splittedValue[0] ? splittedValue[0] : null;
+      state.drupalEntityId = 'undefined' !== typeof splittedValue[1] ? splittedValue[1] : null;
+      state.action = 'edit';
+    }
+
+    _this.state = state;
+    _this.createNew = _this.createNew.bind(_this);
+    _this.cancel = _this.cancel.bind(_this);
+    return _this;
   }
 
   _createClass(MyEMLDrupalConnector, [{
+    key: 'createNew',
+    value: function createNew() {
+      this.setState({ action: 'add' });
+    }
+  }, {
+    key: 'cancel',
+    value: function cancel() {
+      this.setState({ action: null });
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var iframeUrl = this.props.baseUrl;
+      if ('edit' === this.state.action) {
+        iframeUrl = [iframeUrl, this.state.drupalEntityType, this.state.drupalEntityId, 'edit'].join('/');
+      }
+      if ('add' === this.state.action) {
+        iframeUrl = [iframeUrl, 'node', 'add'].join('/');
+      }
       return _react2.default.createElement(
         'div',
         null,
-        'Drupal Connector !'
+        _react2.default.createElement(
+          'div',
+          { className: 'btn-toolbar' },
+          null === this.state.action ? _react2.default.createElement(
+            'button',
+            { type: 'button', className: 'btn btn-success btn-xs', onClick: this.createNew },
+            'Create new'
+          ) : null,
+          null === this.state.action ? _react2.default.createElement(
+            'button',
+            { className: 'btn btn-default btn-xs' },
+            'Create from existing'
+          ) : null,
+          null === this.state.action ? _react2.default.createElement(
+            'button',
+            { className: 'btn btn-info btn-xs' },
+            'Reuse existing'
+          ) : null,
+          'edit' === this.state.action ? _react2.default.createElement(
+            'button',
+            { className: 'btn btn-warning btn-xs' },
+            'Unlink'
+          ) : null,
+          'edit' === this.state.action ? _react2.default.createElement(
+            'button',
+            { className: 'btn btn-danger btn-xs' },
+            'Delete'
+          ) : null,
+          'add' === this.state.action ? _react2.default.createElement(
+            'button',
+            { className: 'btn btn-warning btn-xs', onClick: this.cancel },
+            'Cancel'
+          ) : null
+        ),
+        null === this.state.action ? null : _react2.default.createElement('iframe', {
+          src: iframeUrl,
+          style: { width: '100%', height: '800px' }
+        }),
+        _react2.default.createElement('input', {
+          type: 'hidden',
+          name: this.props.inputData.name,
+          id: this.props.inputData.id,
+          value: this.state.inputValue
+        })
       );
     }
   }]);

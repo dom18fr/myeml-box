@@ -2,7 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MyEMLDrupalConnector from "./components/MyEMLDrupalConnector";
 
-// @todo: get all relevant information about actual hidden field to render it thru react
 const container = document.getElementById('myeml-drupal-connector');
+const input = document.querySelector('#myeml-drupal-connector>input[type=hidden]');
 
-ReactDOM.render(<MyEMLDrupalConnector />, container);
+const baseUrl = container.getAttribute('data-base-url');
+const inputData = {
+  value: input.getAttribute('value'),
+  name: input.getAttribute('name'),
+  id: input.getAttribute('id')
+};
+
+ReactDOM.render(<MyEMLDrupalConnector inputData={ inputData } baseUrl={ baseUrl } />, container);
