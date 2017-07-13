@@ -35080,8 +35080,6 @@ var MyEMLTreeView = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (MyEMLTreeView.__proto__ || Object.getPrototypeOf(MyEMLTreeView)).call(this, props));
 
-    _this.tree = [];
-
     _this.state = {
       treeData: [],
       loading: true

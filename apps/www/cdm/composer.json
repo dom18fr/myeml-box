@@ -60,7 +60,8 @@
             "mkdir -p vendor/simplesamlphp/simplesamlphp/cert/ && cp simplesamlphp/cert/* vendor/simplesamlphp/simplesamlphp/cert/"
         ],
         "react-scripts": [
-            "cd treeview && yarn install && npm run build"
+            "cd treeview && yarn install && npm run build",
+            "cd drupalConnector && yarn install && npm run build"
         ],
         "post-install-cmd": [
             "@symfony-scripts",
