@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import SortableTree from 'react-sortable-tree';
-import axios from "axios";
+import axios from 'axios';
 
 export default class MyEMLTreeView extends Component {
 
@@ -53,9 +53,10 @@ export default class MyEMLTreeView extends Component {
     let eavNode;    
     for(const i in data) {
       const eavNode = data[i];
-      console.log(eavNode);
       let node = {
-        title: eavNode.nodeTitle
+        title: eavNode.nodeTitle,
+        expanded: true,
+        id: eavNode.id
       };
       if (eavNode.hasOwnProperty('children') && 0 < eavNode.children.length) {
         node.children = this.buildTree(eavNode.children);
@@ -73,9 +74,23 @@ export default class MyEMLTreeView extends Component {
             <span>[LOADING ...]</span> : 
             <SortableTree 
               treeData={this.state.treeData} 
-              onChange={treeData => this.setState({ treeData })} 
+              onChange={treeData => this.setState({ treeData })}
               canDrag={false}
-              canDrop={false}
+              generateNodeProps={row => ({
+                buttons: [
+                  <div className="btn-group btn-group-xs btn-group-nowrap">
+                    <a href={'/app_dev.php/tree/Node/' + row.node.id + '/edit'} className="btn btn-primary" data-target-element="#tg_right">
+                      <i className="fa fa-edit"></i>
+                    </a>
+                    <a href={'/app_dev.php/tree/Node/' + row.node.id + '/clone'} className="btn btn-default" data-target-element="#tg_right">
+                      <i className="fa fa-clone"></i>
+                    </a>
+                    <a href={'/app_dev.php/tree/Node/' + row.node.id + '/delete'} className="btn btn-danger" data-target-element="#tg_right">
+                      <i className="fa fa-remove"></i>
+                    </a>
+                  </div>
+                ],
+              })}
             />
           }
       </div>

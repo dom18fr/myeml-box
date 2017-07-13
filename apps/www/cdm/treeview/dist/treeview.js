@@ -35130,9 +35130,10 @@ var MyEMLTreeView = function (_Component) {
       var eavNode = void 0;
       for (var i in data) {
         var _eavNode = data[i];
-        console.log(_eavNode);
         var node = {
-          title: _eavNode.nodeTitle
+          title: _eavNode.nodeTitle,
+          expanded: true,
+          id: _eavNode.id
         };
         if (_eavNode.hasOwnProperty('children') && 0 < _eavNode.children.length) {
           node.children = this.buildTree(_eavNode.children);
@@ -35160,7 +35161,29 @@ var MyEMLTreeView = function (_Component) {
             return _this4.setState({ treeData: treeData });
           },
           canDrag: false,
-          canDrop: false
+          generateNodeProps: function generateNodeProps(row) {
+            return {
+              buttons: [_react2.default.createElement(
+                'div',
+                { className: 'btn-group btn-group-xs btn-group-nowrap' },
+                _react2.default.createElement(
+                  'a',
+                  { href: '/app_dev.php/tree/Node/' + row.node.id + '/edit', className: 'btn btn-primary', 'data-target-element': '#tg_right' },
+                  _react2.default.createElement('i', { className: 'fa fa-edit' })
+                ),
+                _react2.default.createElement(
+                  'a',
+                  { href: '/app_dev.php/tree/Node/' + row.node.id + '/clone', className: 'btn btn-default', 'data-target-element': '#tg_right' },
+                  _react2.default.createElement('i', { className: 'fa fa-clone' })
+                ),
+                _react2.default.createElement(
+                  'a',
+                  { href: '/app_dev.php/tree/Node/' + row.node.id + '/delete', className: 'btn btn-danger', 'data-target-element': '#tg_right' },
+                  _react2.default.createElement('i', { className: 'fa fa-remove' })
+                )
+              )]
+            };
+          }
         })
       );
     }
