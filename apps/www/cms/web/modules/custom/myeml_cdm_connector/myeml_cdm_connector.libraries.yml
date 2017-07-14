@@ -5,3 +5,10 @@ messages:
   dependencies:
     - core/jquery
     - core/drupalSettings
+submit_message_listener:
+  version: 1.x
+  js:
+    js/submit_message_listener.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings

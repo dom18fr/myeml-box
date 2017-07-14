@@ -1,7 +1,11 @@
 <?php
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_ENTITY_TYPE_insert().
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
  */
 function myeml_cdm_connector_node_insert(Drupal\Core\Entity\EntityInterface $entity) {
   myeml_cdm_connector_send_message(['insert', 'node', $entity->id()]);
@@ -9,15 +13,19 @@ function myeml_cdm_connector_node_insert(Drupal\Core\Entity\EntityInterface $ent
 
 /**
  * Implements hook_ENTITY_TYPE_update().
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
  */
-function myeml_cdm_connector_node_update(Drupal\Core\Entity\EntityInterface $entity) {
+function myeml_cdm_connector_node_update(EntityInterface $entity) {
   myeml_cdm_connector_send_message(['update', 'node', $entity->id()]);
 }
 
 /**
  * Implements hook_ENTITY_TYPE_delete().
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
  */
-function myeml_cdm_connector_node_delete(Drupal\Core\Entity\EntityInterface $entity) {
+function myeml_cdm_connector_node_delete(EntityInterface $entity) {
   myeml_cdm_connector_send_message(['delete', 'node', $entity->id()]);
 }
 
@@ -27,11 +35,11 @@ function myeml_cdm_connector_node_delete(Drupal\Core\Entity\EntityInterface $ent
  * @param string $message
  */
 function myeml_cdm_connector_send_message($message = '') {
-  if (empty($message)) {
+  if ('' === $message) {
     return;
   }
 
-  if (!isset($_SESSION['myeml_cdm_connector_messages'])) {
+  if (!array_key_exists('myeml_cdm_connector_messages', $_SESSION)) {
     $_SESSION['myeml_cdm_connector_messages'] = [];
   }
 
@@ -67,4 +75,22 @@ function myeml_cdm_connector_page_attachments(array &$attachments) {
   }
 
   $attachments['#attached']['library'][] = 'myeml_cdm_connector/messages';
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
+function myeml_cdm_connector_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  $submit_listener_form_ids = [
+    'node_page_form',
+  ];
+  if (in_array($form_id, $submit_listener_form_ids, true)) {
+    $form = Drupal::service('myeml_cdm_connector.messages_handler')
+      ->processSubmitListenerForm($form);
+  }
 }

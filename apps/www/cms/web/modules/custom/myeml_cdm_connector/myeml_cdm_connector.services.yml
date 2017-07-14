@@ -1,0 +1,4 @@
+services:
+    myeml_cdm_connector.messages_handler:
+        class: Drupal\myeml_cdm_connector\Service\MessagesHandler
+        arguments: ~
