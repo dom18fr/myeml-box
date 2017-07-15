@@ -13,7 +13,9 @@
   // Send message if available.
   if (drupalSettings.myeml_cdm_connector.messages) {
     //parent.postMessage(drupalSettings.myeml_cdm_connector.messages, drupalSettings.myeml_cdm_connector.target);
-    sendPostMessageJson(drupalSettings.myeml_cdm_connector.messages);
+    $.map(JSON.parse(drupalSettings.myeml_cdm_connector.messages), function(element) {
+      sendPostMessageJson(JSON.stringify(element));
+    });
   }
 
   $(function() {

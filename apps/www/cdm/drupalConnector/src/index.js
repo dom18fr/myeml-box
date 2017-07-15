@@ -3,44 +3,39 @@ import ReactDOM from 'react-dom';
 import MyEMLDrupalConnector from "./components/MyEMLDrupalConnector";
 
 const container = document.getElementById('myeml-drupal-connector');
+container.addEventListener('connector-update', onConnectorUpdate);
+
 const form = getParent(container, 'form');
 const input = document.querySelector('#myeml-drupal-connector input[type=hidden]');
 
 const baseUrl = container.getAttribute('data-base-url');
+const cdmNodeTitle = container.getAttribute('data-cdm-node-title');
 const inputData = {
   value: input.getAttribute('value'),
   name: input.getAttribute('name'),
   id: input.getAttribute('id')
 };
 
-// Capture submit event to work on iframe content first then the submit will be performed anyway
-window.onload = function (e) {
-  container.addEventListener('connector-update', onConnectorUpdate);
-}
-
 function processSubmit(e) {
-    e.preventDefault();
-    const iframe = document.querySelector('#myeml-drupal-connector iframe#drupal-connector-iframe');
-    iframe.contentWindow.postMessage('parent-submit', baseUrl);
-    // post message to iframe// getParent(container, 'form').addEventListener('submit', processSubmit);
+  e.preventDefault();
+  console.log('submit cactched, let\'s transmit to cms');
+  const iframe = document.querySelector('#myeml-drupal-connector iframe#drupal-connector-iframe');
+  iframe.contentWindow.postMessage('parent-submit', baseUrl);
 
-    return false;
+  return false;
 }
 
-function postMessageListener() {
-  // Here listen to message from iframe and retrigg form submit if needed
-    if (null !== iframe) {
-        container.dispatchEvent(new Event('parent-submit'));
-    } else {
-        e.target.submit();
-    }
-}
-
-function onConnectorUpdate(event) { 
-  if (null !== event.drupalConnector.action) {
-    form.addEventListener('submit', processSubmit); 
-  } else {
+function onConnectorUpdate(event) {
+  if (null === event.drupalConnector.action) {
+    console.log('No action, Remove listenr on form submit');
     form.removeEventListener('submit', processSubmit);
+  } else if ('submit' === event.drupalConnector.action) {      
+      console.log('Current action is submit, Remove listenr on form submit');
+      form.removeEventListener('submit', processSubmit);
+      form.submit();
+  } else {
+    console.log('Bind listenr on form submit');
+    form.addEventListener('submit', processSubmit); 
   }
 }
 
@@ -57,4 +52,4 @@ function getParent(el, selector) {
   return retval;
 }
 
-ReactDOM.render(<MyEMLDrupalConnector inputData={ inputData } baseUrl={ baseUrl } />, container);
+ReactDOM.render(<MyEMLDrupalConnector inputData={ inputData } baseUrl={ baseUrl } cdmNodeTitle={ cdmNodeTitle } />, container);

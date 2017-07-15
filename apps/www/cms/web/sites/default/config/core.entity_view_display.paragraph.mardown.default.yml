@@ -1,0 +1,22 @@
+uuid: 042167ff-9083-449b-831f-4fae1cccd4cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.mardown.field_text
+    - paragraphs.paragraphs_type.mardown
+  module:
+    - text
+id: paragraph.mardown.default
+targetEntityType: paragraph
+bundle: mardown
+mode: default
+content:
+  field_text:
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

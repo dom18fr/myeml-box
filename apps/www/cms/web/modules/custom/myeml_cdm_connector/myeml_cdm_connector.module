@@ -8,7 +8,11 @@ use Drupal\Core\Form\FormStateInterface;
  * @param \Drupal\Core\Entity\EntityInterface $entity
  */
 function myeml_cdm_connector_node_insert(Drupal\Core\Entity\EntityInterface $entity) {
-  myeml_cdm_connector_send_message(['insert', 'node', $entity->id()]);
+  myeml_cdm_connector_send_message([
+    'op' => 'insert',
+    'entity_type' => 'node',
+    'entity_id' => $entity->id()
+  ]);
 }
 
 /**
@@ -17,7 +21,11 @@ function myeml_cdm_connector_node_insert(Drupal\Core\Entity\EntityInterface $ent
  * @param \Drupal\Core\Entity\EntityInterface $entity
  */
 function myeml_cdm_connector_node_update(EntityInterface $entity) {
-  myeml_cdm_connector_send_message(['update', 'node', $entity->id()]);
+  myeml_cdm_connector_send_message([
+    'op' => 'update',
+    'entity_type' => 'node',
+    'entity_id' => $entity->id()
+  ]);
 }
 
 /**
@@ -26,7 +34,11 @@ function myeml_cdm_connector_node_update(EntityInterface $entity) {
  * @param \Drupal\Core\Entity\EntityInterface $entity
  */
 function myeml_cdm_connector_node_delete(EntityInterface $entity) {
-  myeml_cdm_connector_send_message(['delete', 'node', $entity->id()]);
+  myeml_cdm_connector_send_message([
+    'op' => 'delete',
+    'entity_type' => 'node',
+    'entity_id' => $entity->id()
+  ]);
 }
 
 /**
@@ -88,6 +100,7 @@ function myeml_cdm_connector_form_alter(&$form, FormStateInterface $form_state, 
 
   $submit_listener_form_ids = [
     'node_page_form',
+    'node_page_edit_form',
   ];
   if (in_array($form_id, $submit_listener_form_ids, true)) {
     $form = Drupal::service('myeml_cdm_connector.messages_handler')

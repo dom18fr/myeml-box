@@ -38,6 +38,7 @@
         "drupal/config_split": "^1.0",
         "drupal/console": "~1.0",
         "drupal/core": "~8.0",
+        "drupal/paragraphs": "^1.1",
         "drush/drush": "~8.0",
         "harvesthq/chosen": "^1.6",
         "webflo/drupal-finder": "^0.3.0",
