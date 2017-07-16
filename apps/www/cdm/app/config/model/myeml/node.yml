@@ -43,12 +43,11 @@ sidus_eav_model:
                     type: string
                     group: front
                     context_mask: '%myeml.context_mask%'
-                nodeRoles:
+                nodeRole:
                     type: choice
                     form_options:
                         choices:
                             Page: page
-                            Layout: layout
                             Layout Zone: layout_zone
                             Block: block
                     group: front
@@ -62,4 +61,13 @@ sidus_eav_model:
                     form_type: MyEML\AdminBundle\Form\DrupalConnectorType
                     group: editorial
                     context_mask: '%myeml.context_mask%'
+                behaviorSettings:
+                    type: data_selector
+                    options:
+                        allowed_families:
+                            - BasicApiWidgetSettings
+                    form_options:
+                        allow_add: true
+                        allow_edit: true
+                    group: Settings
 

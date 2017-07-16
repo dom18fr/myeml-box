@@ -27,11 +27,18 @@ class MyEmlCdmConnectorController extends ControllerBase {
   }
 
   /**
-   * {@inheritdoc}
+   * @param \Symfony\Component\DependencyInjection\ContainerInterface $container
+   *
+   * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
+   * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
+   *
+   * @return static
    */
   public static function create(ContainerInterface $container) {
+    /** @var Renderer $renderer */
+    $renderer = $container->get('renderer');
     return new static(
-      $container->get('renderer')
+      $renderer
     );
   }
 

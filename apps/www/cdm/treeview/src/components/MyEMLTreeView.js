@@ -7,8 +7,6 @@ export default class MyEMLTreeView extends Component {
   constructor(props) {
     super(props);
 
-    this.tree = [];
-
     this.state = {
       treeData: [],
       loading: true,
@@ -69,7 +67,7 @@ export default class MyEMLTreeView extends Component {
 
   render () {
     return (
-      <div style={ {height: 400} }>
+      <div style={ {height: 2000} }>
           { this.state.loading ? 
             <span>[LOADING ...]</span> : 
             <SortableTree 

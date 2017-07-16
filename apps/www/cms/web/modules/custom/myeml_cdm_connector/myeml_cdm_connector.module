@@ -1,24 +1,44 @@
 <?php
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_ENTITY_TYPE_insert().
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
  */
 function myeml_cdm_connector_node_insert(Drupal\Core\Entity\EntityInterface $entity) {
-  myeml_cdm_connector_send_message(['insert', 'node', $entity->id()]);
+  myeml_cdm_connector_send_message([
+    'op' => 'insert',
+    'entity_type' => 'node',
+    'entity_id' => $entity->id()
+  ]);
 }
 
 /**
  * Implements hook_ENTITY_TYPE_update().
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
  */
-function myeml_cdm_connector_node_update(Drupal\Core\Entity\EntityInterface $entity) {
-  myeml_cdm_connector_send_message(['update', 'node', $entity->id()]);
+function myeml_cdm_connector_node_update(EntityInterface $entity) {
+  myeml_cdm_connector_send_message([
+    'op' => 'update',
+    'entity_type' => 'node',
+    'entity_id' => $entity->id()
+  ]);
 }
 
 /**
  * Implements hook_ENTITY_TYPE_delete().
+ *
+ * @param \Drupal\Core\Entity\EntityInterface $entity
  */
-function myeml_cdm_connector_node_delete(Drupal\Core\Entity\EntityInterface $entity) {
-  myeml_cdm_connector_send_message(['delete', 'node', $entity->id()]);
+function myeml_cdm_connector_node_delete(EntityInterface $entity) {
+  myeml_cdm_connector_send_message([
+    'op' => 'delete',
+    'entity_type' => 'node',
+    'entity_id' => $entity->id()
+  ]);
 }
 
 /**
@@ -27,14 +47,13 @@ function myeml_cdm_connector_node_delete(Drupal\Core\Entity\EntityInterface $ent
  * @param string $message
  */
 function myeml_cdm_connector_send_message($message = '') {
-  if (empty($message)) {
+  if ('' === $message) {
     return;
   }
 
-  if (!isset($_SESSION['myeml_cdm_connector_messages'])) {
+  if (!array_key_exists('myeml_cdm_connector_messages', $_SESSION)) {
     $_SESSION['myeml_cdm_connector_messages'] = [];
   }
-
   $_SESSION['myeml_cdm_connector_messages'][] = $message;
 }
 
@@ -54,7 +73,7 @@ function myeml_cdm_connector_get_messages() {
 }
 
 /**
- * Implements hook_page_attachments().
+ * @param array $attachments
  */
 function myeml_cdm_connector_page_attachments(array &$attachments) {
   $allowed_origin = \Drupal::config('myeml_cdm_connector.conf')->get('allowed_origin');
@@ -62,9 +81,28 @@ function myeml_cdm_connector_page_attachments(array &$attachments) {
   $attachments['#attached']['drupalSettings']['myeml_cdm_connector']['target'] = $target;
 
   $messages = myeml_cdm_connector_get_messages();
-  if (!empty($messages)) {
+  if (0 !== count($messages)) {
     $attachments['#attached']['drupalSettings']['myeml_cdm_connector']['messages'] = json_encode($messages);
   }
 
   $attachments['#attached']['library'][] = 'myeml_cdm_connector/messages';
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
+function myeml_cdm_connector_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+  $submit_listener_form_ids = [
+    'node_page_form',
+    'node_page_edit_form',
+  ];
+  if (in_array($form_id, $submit_listener_form_ids, true)) {
+    $form = Drupal::service('myeml_cdm_connector.messages_handler')
+      ->processSubmitListenerForm($form);
+  }
 }

@@ -1,0 +1,12 @@
+{%- block drupal_connector_widget -%}
+    {# @todo: properly set a parameter for cms url #}
+    <div
+        id="myeml-drupal-connector"
+        data-base-url="http://local.cms.makersboard.me"
+        data-cdm-node-title="{{ form.parent.parent.children.nodeTitle.vars.value }}">
+
+        {%- set type = 'hidden' -%}
+        {{ block('form_widget_simple') }}
+    </div>
+    <script src="{{ asset('js/drupalconnector.js') }}" type="text/javascript"></script>
+{%- endblock drupal_connector_widget -%}

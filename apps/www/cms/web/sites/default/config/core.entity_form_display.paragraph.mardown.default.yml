@@ -1,0 +1,26 @@
+uuid: 09c7744a-5c30-4123-96c0-f0612693be0b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.mardown.field_text
+    - paragraphs.paragraphs_type.mardown
+  module:
+    - text
+id: paragraph.mardown.default
+targetEntityType: paragraph
+bundle: mardown
+mode: default
+content:
+  field_text:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true
