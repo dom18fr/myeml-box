@@ -27,10 +27,10 @@ function processSubmit(e) {
 
 function onConnectorUpdate(event) {
   if (null === event.drupalConnector.action) {
-    console.log('No action, Remove listenr on form submit');
+    console.log('No action, Remove listener on form submit');
     form.removeEventListener('submit', processSubmit);
   } else if ('submit' === event.drupalConnector.action) {      
-      console.log('Current action is submit, Remove listenr on form submit');
+      console.log('Current action is submit, remove listener on form submit');
       form.removeEventListener('submit', processSubmit);
       form.submit();
   } else {

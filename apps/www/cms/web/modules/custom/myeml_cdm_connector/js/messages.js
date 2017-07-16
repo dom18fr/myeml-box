@@ -6,7 +6,11 @@
   }
 
   function sendPostMessage(action, entity, id) {
-    var json = JSON.stringify([action, entity, id]);
+    var json = JSON.stringify({
+      "op": action,
+      "entity_type": entity,
+      "entity_id": id
+    });
     sendPostMessageJson(json);
   }
 
@@ -22,18 +26,15 @@
     $('.view-id-node_select td.views-field-nid').each(function () {
       var $this = $(this);
       var nid = parseInt($this.text());
-      $this.html('<input type="checkbox" value="' + nid + '" class="cdm-connector-nid" />');
+      $this.html('<input type="radio" value="' + nid + '" name="cdm-connector-nid" class="cdm-connector-nid" />');
     });
 
     $('.view-id-node_select .view-content').append('<input type="button" value="Select" class="button cdm-connector-select" />');
 
     $('.cdm-connector-select').on('click', function (event) {
-      var nids = $('.cdm-connector-nid:checked').map(function () {
-        return this.value;
-      });
-      if (nids.length) {
-        sendPostMessage('select', 'node', $.makeArray(nids).join(','));
-        $('.cdm-connector-nid:checked').prop('checked', false);
+      var nid = $('input[name="cdm-connector-nid"]:checked').attr('value');
+      if ('undefined' !== typeof(nid)) {
+        sendPostMessage('select', 'node', nid);
       }
     });
   });

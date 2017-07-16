@@ -59,9 +59,11 @@ export default class MyEMLDrupalConnector extends Component {
     try {
       message = JSON.parse(event.data)
     } catch(error) {
-      
+      console.error(error);
     }
+    console.log('CDM reveived message from CMS.');
     if ('object' === typeof(message)) {
+      console.log('"' + message.op + '" operation performed in cms');
       if ('insert' === message.op) {
         this.setState(
           {
@@ -86,6 +88,17 @@ export default class MyEMLDrupalConnector extends Component {
             drupalEntityType: null,
             drupalEntityId: null,
             inputValue: ''
+          }
+        );
+      }
+      if ('select' === message.op) {
+        console.log('select it !');
+        this.setState(
+          {
+            action: 'edit',
+            drupalEntityType: message.entity_type,
+            drupalEntityId: message.entity_id,
+            inputValue: message.entity_type + '--' + message.entity_id
           }
         );
       }
@@ -117,8 +130,11 @@ export default class MyEMLDrupalConnector extends Component {
   }
 
   onReuseExisting() {
-    console.warn('action "Reuse existing" is not implemented yet');
-    alert('This action is not implemented yet.');
+    this.setState(
+      {
+        action: 'reuse',
+      }
+    );
   }
 
   onDelete() {
@@ -155,6 +171,12 @@ export default class MyEMLDrupalConnector extends Component {
         'delete'
       ].join('/') + '?token=' + Math.floor(Math.random() * 100000);
     }
+    if ('reuse' === this.state.action) {
+      iframeUrl = [
+        iframeUrl,
+        'node-select',
+      ].join('/') + '?token=' + Math.floor(Math.random() * 100000);
+    }
     return (
         <div>
             <div className="btn-toolbar">
@@ -163,11 +185,13 @@ export default class MyEMLDrupalConnector extends Component {
                 { null === this.state.action ? <button type="button" className="btn btn-info btn-xs" onClick={this.onReuseExisting}>Reuse existing</button> : null }
                 { 'edit' === this.state.action ? <button type="button" className="btn btn-warning btn-xs" onClick={this.onUnlink}>Unlink</button> : null }
                 { 'edit' === this.state.action ? <button type="button" className="btn btn-danger btn-xs" onClick={this.onDelete}>Delete</button> : null }
-                { 'add' === this.state.action ? <button type="button" className="btn btn-warning btn-xs" onClick={this.onCancel}>Cancel</button> : null }
+                { 'add' === this.state.action || 'reuse' === this.state.action ? <button type="button" className="btn btn-warning btn-xs" onClick={this.onCancel}>Cancel</button> : null }
             </div>
             {
                 null === this.state.action ?
                 null :
+                'submit' === this.state.action ?
+                <div>[Processing submit...]</div> :
                 <iframe
                     id="drupal-connector-iframe"
                     src={ iframeUrl }

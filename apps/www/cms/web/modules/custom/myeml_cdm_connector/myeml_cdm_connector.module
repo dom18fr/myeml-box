@@ -54,7 +54,6 @@ function myeml_cdm_connector_send_message($message = '') {
   if (!array_key_exists('myeml_cdm_connector_messages', $_SESSION)) {
     $_SESSION['myeml_cdm_connector_messages'] = [];
   }
-
   $_SESSION['myeml_cdm_connector_messages'][] = $message;
 }
 
@@ -74,7 +73,7 @@ function myeml_cdm_connector_get_messages() {
 }
 
 /**
- * Implements hook_page_attachments().
+ * @param array $attachments
  */
 function myeml_cdm_connector_page_attachments(array &$attachments) {
   $allowed_origin = \Drupal::config('myeml_cdm_connector.conf')->get('allowed_origin');
@@ -82,7 +81,7 @@ function myeml_cdm_connector_page_attachments(array &$attachments) {
   $attachments['#attached']['drupalSettings']['myeml_cdm_connector']['target'] = $target;
 
   $messages = myeml_cdm_connector_get_messages();
-  if (!empty($messages)) {
+  if (0 !== count($messages)) {
     $attachments['#attached']['drupalSettings']['myeml_cdm_connector']['messages'] = json_encode($messages);
   }
 
