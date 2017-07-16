@@ -12,7 +12,7 @@
   * Endpoint API REST Basique
   * Ébauche de config Drupal 8 (paragraphs, views + 1 type de contenu)
   * Appli front backend en Silex, front en React seulement bootstrapé
-  * Tentative de connexion SSO SAML / ADFS sur pour le CDM, premiers tests encourageants mais non concluants
+  * Tentative de connexion SSO SAML / ADFS sur pour le CDM
 
 ## 2 - Les succès
 
@@ -155,7 +155,11 @@ Pour moi :
 Je suis partagé :p  
 Mais en temps 1 la première solution semble plus raisonnable, mais il faudra peut être un peu d'assistance de @vchanot pour être efficace.
 
-### 3.10 - POCShit
+### 3.10 - SSO
+
+Des tests de connexion au SSO ADFS de l'EM on été fait, mais rien de concluant pour l'instant. Rien de décourageant non plus :)
+
+### 3.11 - POCShit
 
 Par manque de temps, recherche d'efficacité, une bonne partie du code produit n'est pas très élégant ou ne respecte pas les bonnes pratiques. Le naming des variables, atributs, services, modules est discutable et parfois le reflet de changement de direction.  
 Ce n'est qu'un POC quoi ...  
