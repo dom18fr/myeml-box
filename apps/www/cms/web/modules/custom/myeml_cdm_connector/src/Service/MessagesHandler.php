@@ -45,10 +45,10 @@ class MessagesHandler {
     // Pre fill the title using title from cdm
     $default_title = &$form['title']['widget'][0]['value']['#default_value'];
     if (
-      $cdm_title = \Drupal::request()->query->get('cdmNodeTitle')
-      && null === $default_title
+      null === $default_title
+      && \Drupal::request()->query->get('cdmNodeTitle')
     ) {
-      $default_title = $cdm_title;
+      $default_title = \Drupal::request()->query->get('cdmNodeTitle');
       // @todo: is hiding title really usefull ?
 //      $form['title']['#attributes']['class'][] = 'hidden';
 //      $form['title']['widget'][0]['value']['#attributes']['readonly'] = true;

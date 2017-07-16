@@ -48,7 +48,6 @@ sidus_eav_model:
                     form_options:
                         choices:
                             Page: page
-                            Layout: layout
                             Layout Zone: layout_zone
                             Block: block
                     group: front
