@@ -25,6 +25,7 @@ imports:
 
     # Model configuration, order of files matters
     - { resource: myeml/node.yml }
+    - { resource: myeml/basic_api_widget_settings.yml }
     - { resource: myeml/user.yml }
 
     - { resource: api.yml }

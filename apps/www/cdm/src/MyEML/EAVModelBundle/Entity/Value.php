@@ -21,28 +21,28 @@ class Value extends AbstractValue
     /**
      * @var string
      *
-     * @ORM\Column(name="campus", type="text", nullable=false)
+     * @ORM\Column(name="campus", type="text", nullable=true)
      */
     protected $campus;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="program", type="text", nullable=false)
+     * @ORM\Column(name="program", type="text", nullable=true)
      */
     protected $program;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="locale", type="text", nullable=false)
+     * @ORM\Column(name="locale", type="text", nullable=true)
      */
     protected $locale;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="profile", type="text", nullable=false)
+     * @ORM\Column(name="profile", type="text", nullable=true)
      */
     protected $profile;
 

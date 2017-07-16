@@ -1,0 +1,21 @@
+sidus_eav_model:
+    families:
+        BasicApiWidgetSettings:
+            data_class: MyEML\EAVModelBundle\Entity\BasicApiWidgetSettings
+            attributeAsLabel: settingsId
+            attributes:
+                settingsId:
+                    type: string_identifier
+                    form_options:
+                        disabled: true
+                parentNodes:
+                    type: data_selector
+                    multiple: true
+                    form_options:
+                        disabled: true
+                    context_mask: '%myeml.context_mask%'
+                apiUrl:
+                    type: string
+                    required: true
+                    context_mask: '%myeml.context_mask%'
+
