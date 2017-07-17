@@ -6,26 +6,30 @@
   register: nginx_vhosts_dir
   become: no
 
-- name: Copy certificate
-  file:
-    src: ../files/nginx-selfsigned.crt
-    dest: /etc/ssl/certs/nginx-selfsigned.crt
+- name: Configure Nginx for HTTPS
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
     owner: root
     group: root
     mode: 0644
-
-- name: Copy certificate signature
-  file:
-    src: ../files/nginx-selfsigned.key
-    dest: /etc/ssl/private/nginx-selfsigned.key
-    owner: root
-    group: root
-    mode: 0644
+  with_items:
+    - src: ../files/nginx-selfsigned.crt
+      dest: /etc/ssl/certs/nginx-selfsigned.crt
+    - src: ../files/nginx-selfsigned.key
+      dest: /etc/ssl/private/nginx-selfsigned.key
+    - src: ../files/self-signed.conf
+      dest: /etc/nginx/snippets/self-signed.conf
+    - src: ../files/ssl-params.conf
+      dest: /etc/nginx/snippets/ssl-params.conf
+    - src: ../files/dhparam.pem
+      dest: /etc/ssl/certs/dhparam.pem
+  become: yes
 
 - name: Register CDM app nginx vhost
   template:
     src: ../templates/local.cdm.conf.j2
-    dest: "/etc/nginx/sites-enabled/local.cdm.makersboard.me.conf"
+    dest: "/etc/nginx/sites-enabled/{{ myeml_cdm_hostname }}.conf"
     force: yes
   become: yes
   when: nginx_vhosts_dir.stat.isdir is defined and nginx_vhosts_dir.stat.isdir
@@ -35,7 +39,7 @@
 - name: Register Front app nginx vhost
   template:
     src: ../templates/local.front.conf.j2
-    dest: "/etc/nginx/sites-enabled/local.front.makersboard.me.conf"
+    dest: "/etc/nginx/sites-enabled/{{ myeml_front_hostname }}.conf"
     force: yes
   become: yes
   when: nginx_vhosts_dir.stat.isdir is defined and nginx_vhosts_dir.stat.isdir

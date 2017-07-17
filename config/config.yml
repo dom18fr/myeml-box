@@ -20,6 +20,9 @@ myeml_front_hostname: "{{ vagrant_hostname }}"
 myeml_cdm_docroot: /var/www/myeml/cdm/web
 myeml_front_docroot: /var/www/myeml/front/web
 
+php_app_user: syuser
+php_app_user_home: "/home/{{ php_app_user }}"
+
 # Allow Drupal VM to be accessed via a public network interface on your host.
 # Vagrant boxes are insecure by default, so be careful. You've been warned!
 # See: https://docs.vagrantup.com/v2/networking/public_network.html
@@ -75,7 +78,7 @@ drush_aliases_guest_template: "templates/drupalvm-local.aliases.drushrc.php.j2"
 # here. Set the 'is_php' property for document roots that contain PHP apps like
 # Drupal.
 nginx_hosts:
-  - server_name: "local.cms.makersboard.me"
+  - server_name: "{{ myeml_cms_hostname }}"
     root: "/var/www/myeml/cms/web"
     is_php: true
 
