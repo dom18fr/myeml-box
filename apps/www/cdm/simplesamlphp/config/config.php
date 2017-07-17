@@ -6,7 +6,8 @@
 
 $config = array(
 
-    'baseurlpath' => 'simplesaml/',
+    'baseurlpath' => 'https://local.cdm.makersboard.me/simplesaml/',
+
     'certdir' => 'cert/',
     'loggingdir' => 'log/',
     'datadir' => 'data/',
@@ -55,7 +56,7 @@ $config = array(
     'debug.validatexml' => false,
 
 
-    'auth.adminpassword' => '123',
+    'auth.adminpassword' => 'admin',
     'admin.protectindexpage' => false,
     'admin.protectmetadata' => false,
 

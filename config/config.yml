@@ -138,6 +138,7 @@ installed_extras:
 extra_packages:
   - sqlite
   - php-intl
+  - php-mcrypt
 
 # You can configure almost anything else on the server in the rest of this file.
 extra_security_enabled: false

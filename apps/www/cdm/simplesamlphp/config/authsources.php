@@ -16,14 +16,18 @@ $config = array(
 
         // The entity ID of the IdP this should SP should contact.
         // Can be NULL/unset, in which case the user will be shown a list of available IdPs.
-        'idp' => null,
+        'idp' => 'https://emauth.em-lyon.com/adfs/services/trust',
 
         // The URL to the discovery service.
         // Can be NULL/unset, in which case a builtin discovery service will be used.
         'discoURL' => null,
 
+        // ADFS 2012R2 requires signing of the logout - the others are optional (may be overhead you don't want.)
+        'sign.logout' => TRUE,
+        'redirect.sign' => TRUE,
+        'assertion.encryption' => TRUE,
 
-        'privatekey' => 'saml.key',
+        'privatekey' => 'saml.pem',
         'certificate' => 'saml.crt',
 
         'signature.algorithm' => 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256',
