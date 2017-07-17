@@ -1,0 +1,7 @@
+# Include MyEMLyon specific playbook
+config.vm.provision 'ansible' do |ansible|
+  ansible.playbook = "#{host_config_dir}/../provisioning/myeml.playbook.yml"
+  ansible.ask_sudo_pass = true
+  # Debug ansible output.
+  # ansible.verbose = "vvv"
+end

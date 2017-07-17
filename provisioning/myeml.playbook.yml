@@ -1,0 +1,26 @@
+---
+- hosts: all
+  become: yes
+
+  vars_files:
+    - ../vendor/geerlingguy/drupal-vm/provisioning/vars/main.yml
+    - ../vendor/geerlingguy/drupal-vm/default.config.yml
+
+  pre_tasks:
+      - name: Define config_dir.
+        set_fact:
+          config_dir: "../config"
+        when: config_dir is not defined
+        tags: ['always']
+
+      - include_vars: "{{ item }}"
+        with_fileglob:
+          - "{{ config_dir }}/config.yml"
+          - "{{ config_dir }}/local.config.yml"
+          - "{{ config_dir }}/{{ lookup('env', 'DRUPALVM_ENV')|default(drupalvm_env, true)|default(ansible_env.DRUPALVM_ENV)|default(omit) }}.config.yml"
+        tags: ['always']
+
+  roles:
+    - { role: app-user, tags: ['myeml'] }
+    - { role: local-hosts, tags: ['myeml'] }
+    - { role: nginx-vhosts, tags: ['myeml'] }

@@ -12,6 +12,14 @@ vagrant_hostname: local.makersboard.me
 vagrant_machine_name: myeml-box
 vagrant_ip: 192.168.88.66
 
+# MyEML configuration
+myeml_cms_hostname: local.cms.makersboard.me
+myeml_cdm_hostname: local.cdm.makersboard.me
+myeml_front_hostname: "{{ vagrant_hostname }}"
+
+myeml_cdm_docroot: /var/www/myeml/cdm/web
+myeml_front_docroot: /var/www/myeml/front/web
+
 # Allow Drupal VM to be accessed via a public network interface on your host.
 # Vagrant boxes are insecure by default, so be careful. You've been warned!
 # See: https://docs.vagrantup.com/v2/networking/public_network.html

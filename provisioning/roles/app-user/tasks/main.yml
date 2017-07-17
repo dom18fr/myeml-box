@@ -1,0 +1,27 @@
+---
+
+#- name: Create specific app user
+#  user: "uid={{ lookup('pipe', 'id -u') }} name={{ php_app_user }} state=present home={{ home_path }} password=appuser"
+#  become: yes
+
+#- name: RE Configure php-fpm pool user since drupalvm do not expose a global config for it
+#  lineinfile:
+#    dest: "/etc/php/7.0/fpm/pool.d/www.conf"
+#    regexp: "{{ item.regexp }}"
+#    line: "{{ item.line }}"
+#    state: present
+#  with_items:
+#    - regexp: "^user.?=.+$"
+#      line: "user = {{ php_app_user }}"
+
+#- name: RE Configure nginx user since drupalvm do not expose a global config for it
+#  lineinfile:
+#    dest: "/etc/nginx/nginx.conf"
+#    regexp: "{{ item.regexp }}"
+#    line: "{{ item.line }}"
+#    state: present
+#  with_items:
+#    - regexp: "^user.+$"
+#      line: "user  {{ php_app_user }};"
+#  notify:
+#    - restart webserver

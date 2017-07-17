@@ -1,0 +1,14 @@
+---
+
+- name: Register hosts on local machine
+  lineinfile:
+    dest: "/etc/hosts"
+    line: "{{ vagrant_ip}}  {{ item }}"
+    insertafter: EOF
+    state: present
+  with_items:
+    - "{{ myeml_cms_hostname }}"
+    - "{{ myeml_cdm_hostname }}"
+    - "{{ myeml_front_hostname }}"
+  become_user: root
+  delegate_to: 127.0.0.1
