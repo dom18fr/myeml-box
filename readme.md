@@ -16,10 +16,9 @@
 
 *Sur la machine hôte*
 
+> ⚠️  Lors du `vagrant up`, le mot de passe pour sudo est à nouveau demandé en fin de process.
+
 ```
-echo '192.168.88.66  local.cms.makersboard.me' | sudo tee -a /etc/hosts > /dev/null
-echo '192.168.88.66  local.cdm.makersboard.me' | sudo tee -a /etc/hosts > /dev/null
-echo '192.168.88.66  local.makersboard.me' | sudo tee -a /etc/hosts > /dev/null
 composer install
 vagrant up
 vagrant ssh
@@ -64,58 +63,6 @@ drush cim -y
 drush cim -y
 ```
 
-## Permissions system
-
-### Utilisateur applicatif
-
-Lorsque l'on fait du symfony, il est necessaire que l'utilisateur system qui execute php soit propriétaire du code source. En effet, Symfony écrit dans les sources pour le cache, les sessions etc...  
-Dans notre VM, les sources sont partagées via nfs et le propriétaire est l'utilisateur sur la machine hôte. Mais cet utilisateur n'existe pas dans le contexte de la vm, seul son uid est visible.
-L'astuce consiste donc à créer un utilisateur dans la vm et lui assigner le même uid que l'utilisateur de la machine hôte.
-On pourra ensuite configurer php pour qu'il s'execute avec ce user, et aux yeux du système, ce sera bien lui le propriétaire des sources.
-
-*Noter le **UID** de l'utilisateur sur votre machine hôte, il est visible dans la vm lorsque l'on fait un `ll` dans un dossier
-sous le partage nfs.*
-
-```
-# Créer un user pour php (le mot de passe et les infos user sont sans importance)
-# et lui setter le UID de l'utilisateur de la machine hôte
-sudo adduser syuser
-sudo usermod -u UID syuser
-
-sudo nano /etc/php/7.0/fpm/pool.d/www.conf
-```
-
-*Remplacer :*
-
-```
-user = www-data
-group = www-data
-```
-
-*par :*
-
-```
-user = syuser
-group = syuser
-```
-
-### Rédemarer nginx et php
-
-```
-sudo service nginx restart
-sudo service php7.0-fpm restart
-```
-
-## Memcached
-
-Pour de meilleures perfs, les sessions symfony sont stockées dans memcache plutôt qu'en fichier.
-
-```
-cd /home/vagrant
-sudo apt-get install memcached
-sudo apt-get install php-memcached
-```
-
 ## CDM
 
 *Dans la vm*
@@ -132,54 +79,6 @@ composer install --no-interaction
 ```
 bin/console doctrine:schema:create
 bin/console eavmanager:create-user -a --password=admin admin@clever-age.com
-```
-
-### Création d'un vhost pour Symfony
-
-```
-sudo nano /etc/nginx/sites-enabled/local.cdm.makersboard.me
-```
-
-*Copier ce contenu dans le vhost*
-
-```
-server {
-    server_name local.cdm.makersboard.me;
-    root /var/www/myeml/cdm/web;
-    location / {
-        try_files $uri /app.php$is_args$args;
-    }
-    location ^~ /simplesaml {
-        alias /var/www/myeml/cdm/vendor/simplesamlphp/simplesamlphp/www;
-        index index.php;
-        location ~ ^(?<prefix>/simplesaml)(?<phpfile>.+?\.php)(?<pathinfo>/.*)?$ {
-            fastcgi_pass 127.0.0.1:9000;
-            include fastcgi_params;
-            fastcgi_param SCRIPT_FILENAME $document_root$phpfile;
-            fastcgi_param PATH_INFO $pathinfo if_not_empty;
-        }
-    }
-    location ~ ^/(app_dev|config)\.php(/|$) {
-        fastcgi_pass 127.0.0.1:9000;
-        fastcgi_split_path_info ^(.+\.php)(/.*)$;
-        include fastcgi_params;
-        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
-        fastcgi_param DOCUMENT_ROOT $realpath_root;
-    }
-    location ~ ^/app\.php(/|$) {
-        fastcgi_pass 127.0.0.1:9000;
-        fastcgi_split_path_info ^(.+\.php)(/.*)$;
-        include fastcgi_params;
-        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
-        fastcgi_param DOCUMENT_ROOT $realpath_root;
-        internal;
-    }
-    location ~ \.php$ {
-      return 404;
-    }
-    error_log /var/log/nginx/myeml_cdm_error.log;
-    access_log /var/log/nginx/myeml_cdm_access.log;
-}
 ```
 
 ## Front
@@ -201,45 +100,6 @@ sudo npm install -g webpack
 ```
 cd /var/www/myeml/front
 composer install
-```
-
-### Création d'un vhost pour Silex
-
-```
-sudo nano /etc/nginx/sites-enabled/local.makersboard.me.conf
-```
-
-*Copier ce contenu dans le vhost local.makersboard.me.conf*
-
-```
-server {
-    server_name local.makersboard.me;
-    root /var/www/myeml/front/web;
-    location / {
-        try_files $uri /index.php$is_args$args;
-    }
-    location ~ ^/index\.php(/|$) {
-        fastcgi_pass 127.0.0.1:9000;
-        fastcgi_split_path_info ^(.+\.php)(/.*)$;
-        include fastcgi_params;
-        fastcgi_split_path_info ^(.+\.php)(/.*)$;
-        include fastcgi_params;
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param HTTPS off;
-    }
-    location ~ \.php$ {
-        return 404;
-    }
-    error_log /var/log/nginx/myeml_front_error.log;
-    access_log /var/log/nginx/myeml_front_access.log;
-}
-```
-
-### Rédemarer nginx et php
-
-```
-sudo service nginx restart
-sudo service php7.0-fpm restart
 ```
 
 ---
